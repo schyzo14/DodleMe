@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 var listeEvenement = {};
 
 function Evenement(id, nom, descriptif){
@@ -19,3 +20,18 @@ var creerEveneement = function(id, nom, descriptif) {
 
 exports.creerEvenement = creerEvenement;
 exports.getListe = getListe;
+=======
+// Liste des evenements
+var listeEvenements = {};
+
+// Constructeur pour les Evenements
+function Evenement(id, nom, description) {
+    // l'id de levenement
+    this.id = id;
+    // nom de l'evenement
+    this.nom = nom;
+    // la description de l'evenement
+    this.description = description;
+}
+
+>>>>>>> 9e81a76b792f2c9cb4686762452b0565eca9b733
