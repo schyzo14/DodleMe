@@ -1,9 +1,9 @@
 var listeEvenement = {};
 
-function Evenement(id, nom, descriptif){
+function Evenement(id, nom, descriptif) {
     this.id = id;
     this.nom = nom;
-    this.descriptif = nom;
+    this.descriptif = descriptif;
 }
 
 // créer un nouveau événement

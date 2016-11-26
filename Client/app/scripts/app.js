@@ -29,6 +29,11 @@ angular
         controller: 'AboutCtrl',
         controllerAs: 'about'
       })
+      .when('/creerEvenement', {
+        templateUrl: 'views/creerEvenement.html',
+        controller: 'creerEvenementCtrl',
+        controllerAs: 'creerEvenement'
+      })
       .when('/detailEvenements, {
         templateUrl: 'views/detailEvenements.html',
         controller: 'DetailEvenementsCtrl',
