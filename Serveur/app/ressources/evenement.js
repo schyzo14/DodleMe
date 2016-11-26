@@ -24,7 +24,8 @@ app.all('/*', function(req, res, next) {
 var server = require('http').Server(app);
 server.listen(8080);
 var bodyParser = require('body-parser');
-app.use(bodyParser.json()); //include du plugin pour parser du JSon
+app.use(bodyParser.json());
+
 
 var evenement = require('../metier/evenement.js');
 
@@ -32,7 +33,7 @@ var evenement = require('../metier/evenement.js');
 // POST
 app.post(
     '/evenement', function(req, res) {
-        if(evenement.creerEveneement (req.body.id, req.body.nom, req.body.descriptif) == 1) {
+        if(evenement.creerEvenement (req.body.id, req.body.nom, req.body.descriptif) == 1) {
             res.json("OK");
         } else {
             res.json("echec");
@@ -44,6 +45,6 @@ app.post(
 // GET
 app.get(
     '/evenement/:idE', function(req, res) {
-        return evenement.getEvenement (req.body.id);
+        res.json(evenement.getEvenement (req.params.idE));
     }
 );
