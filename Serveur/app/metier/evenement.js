@@ -17,5 +17,15 @@ var creerEveneement = function(id, nom, descriptif) {
     return 0;
 }
 
+// recupérer événement
+var getEvenement = function(id) {
+	// s'il n'existe pas
+	if (typeof listeEvenement[id] === 'undefined') {
+		return 0;
+    }
+    return listeEvenement[id];
+}
+
 exports.creerEvenement = creerEvenement;
+exports.getEvenement = getEvenement;
 exports.getListe = getListe;
