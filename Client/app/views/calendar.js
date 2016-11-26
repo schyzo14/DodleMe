@@ -24,12 +24,12 @@ app.directive("calendar", function() {
             _buildMonth(scope, start, scope.month);
 
             scope.select = function(day) {
-                scope.selected = day.date;  
+                scope.selected = day.date;
             };
 
             scope.next = function() {
                 var next = scope.month.clone();
-                _removeTime(next.month(next.month()+1)).date(1));
+                _removeTime(next.month(next.month()+1)).date(1);
                 scope.month.month(scope.month.month()+1);
                 _buildMonth(scope, next, scope.month);
             };

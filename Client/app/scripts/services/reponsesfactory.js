@@ -10,6 +10,6 @@
 angular.module('clientApp')
   .factory('DetailEventsFactory', function ($resource) {
     return $resource('http://localhost:8080/reponses/', {
-        
+        //
     })
   });

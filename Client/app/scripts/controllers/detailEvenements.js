@@ -9,5 +9,5 @@
  */
 angular.module('clientApp')
   .controller('DetailEvenementsCtrl', ['$scope', 'DetailEventsFactory', '$location', function ($scope, DetailEventsFactory) {
-    DetailEventsFactory.post();
+    $scope.reponses = DetailEventsFactory.get();
   }]);

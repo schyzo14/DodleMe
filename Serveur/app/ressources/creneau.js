@@ -1,9 +1,9 @@
-
 var creneau = require('../metier/creneau.js');
-
+var express = require('express');
+var router = express.Router();
 
 //POST
-app.post(
+router.post(
     '/evenement/:idE/', function(req, res) {
         if(creneau.ajouterCreneau(req.body.id, req.body.heure, req.body.date, req.params.idE) == 1) {
             res.json("OK");
@@ -12,3 +12,5 @@ app.post(
         }
     }
 );
+
+module.exports = router;

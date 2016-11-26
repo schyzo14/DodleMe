@@ -8,7 +8,7 @@ function Creneau(id, heure, date) {
     this.date = date;
     // id de l'evenement
     this.idEvenement = idE;
-}
+};
 
 // Ajouter un créneau
 var ajouterCreneau = function(idC, heure, date, idE) {
@@ -16,13 +16,13 @@ var ajouterCreneau = function(idC, heure, date, idE) {
     var listeCreneau = {};
     listeCreneau = listeEvenement[idE].listeCreneau;
     // si le creneau n'existe pas
-    if (typeof listeCreneau[idC] === 'undefined) {
+    if (typeof listeCreneau[idC] === 'undefined') {
         listeCreneau[idC] = new Creneau(idC, heure, date);
         listeEvenement[idE].listeCreneau = listeCreneau;
         return 1;
     }
     return 0;
-}
+};
 
 // fonctions exportés
-export.ajouterCreneau = ajouterCreneau;
+exports.ajouterCreneau = ajouterCreneau;

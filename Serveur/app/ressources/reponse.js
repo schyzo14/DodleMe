@@ -1,14 +1,15 @@
 var reponse = require('../metier/reponse.js');
+var express = require('express');
+var router = express.Router();
 
 //GET
-app.post(
-    '/reponses/', function(req, res) {
-        res.json(reponse.listeReponses());
-    }
-)
+router.get('/:id', function(req, res, next) {
+    console.log(req.params.id);
+    res.send("lol");
+});
 
 //POST
-app.post(
+/*router.post(
     '/reponses/', function(req, res) {
         if(reponse.ajouterReponse(req.body.evenement, req.body.creneaux) === 1) {
             res.json("OK");
@@ -16,4 +17,6 @@ app.post(
             res.json("NOK");
         }
     }
-)
+)*/
+
+module.exports = router;
