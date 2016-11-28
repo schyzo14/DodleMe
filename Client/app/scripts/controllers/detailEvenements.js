@@ -8,6 +8,8 @@
  * Controller of the clientApp
  */
 angular.module('clientApp')
-  .controller('DetailEvenementsCtrl', ['$scope', 'DetailEventsFactory', '$location', function ($scope, DetailEventsFactory) {
-    $scope.reponses = DetailEventsFactory.get();
+  .controller('DetailEvenementsCtrl', ['$location', '$scope', 'ReponsesFactory', function ($location, $scope, ReponsesFactory) {
+    //$scope.reponses = DetailEventsFactory.get();
+    var id = $location.search().idE;
+    alert(id);
   }]);

@@ -13,9 +13,9 @@
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
-      
+
     <link rel="stylesheet" href="styles/calendar.css">
-      
+
     <!-- endbuild -->
   </head>
   <body ng-app="clientApp">
@@ -44,7 +44,7 @@
             <ul class="nav navbar-nav">
               <li class="active"><a href="#/">Home</a></li>
               <li><a ng-href="#/about">About</a></li>
-              <li class="active"><a ng-href="#/creerEvenement">CréerEvenement</a></li>
+              <li><a ng-href="#/creerEvenement">CréerEvenement</a></li>
               <li><a ng-href="#/">Contact</a></li>
             </ul>
           </div>
@@ -88,14 +88,16 @@
     <!-- endbower -->
     <!-- endbuild -->
 
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/controllers/about.js"></script>
-        <script src="scripts/services/eventsfactory.js"></script>
-      
-        <script src="scripts/controllers/creerEvenement.js"></script>
-        <script src="views/calendar.js"></script>
-        <!-- endbuild -->
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/controllers/about.js"></script>
+    <script src="scripts/controllers/creerEvenement.js"></script>
+    <script src="scripts/controllers/detailEvenements.js"></script>
+    <script src="scripts/services/eventfactory.js"></script>
+    <script src="scripts/services/eventsfactory.js"></script>
+    <script src="scripts/services/reponsesfactory.js"></script>
+    <script src="views/calendar.js"></script>
+    <!-- endbuild -->
 </body>
 </html>

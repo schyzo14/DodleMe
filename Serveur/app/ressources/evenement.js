@@ -5,7 +5,7 @@ var router = express.Router();
 
 // POST
 router.post(
-    '/evenement', function(req, res) {
+    '/', function(req, res) {
         if(evenement.creerEvenement (req.body.id, req.body.nom, req.body.descriptif) == 1) {
             res.json("OK");
         } else {
@@ -17,7 +17,7 @@ router.post(
 
 // GET
 router.get(
-    '/evenement/:idE', function(req, res) {
+    '/:idE', function(req, res) {
         res.json(evenement.getEvenement (req.params.idE));
     }
 );

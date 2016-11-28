@@ -5,6 +5,7 @@ function Evenement(id, nom, descriptif) {
     this.nom = nom;
     this.descriptif = descriptif;
     this.listeCreneau = {};
+    this.listeReponses = {};
 }
 
 // créer un nouveau événement
@@ -27,6 +28,15 @@ var getEvenement = function(id) {
     return listeEvenement[id];
 }
 
+var getListe = function() {
+    return listeEvenement;
+}
+
+var getReponses = function(id) {
+    return listeEvenement[id].listeReponses;
+}
+
 exports.creerEvenement = creerEvenement;
 exports.getEvenement = getEvenement;
-//exports.getListe = getListe;
+exports.getListe = getListe;
+exports.getReponses = getReponses;

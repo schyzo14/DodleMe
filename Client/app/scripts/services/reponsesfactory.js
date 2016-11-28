@@ -8,7 +8,7 @@
  * Factory in the clientApp.
  */
 angular.module('clientApp')
-  .factory('DetailEventsFactory', function ($resource) {
+  .factory('ReponsesFactory', function ($resource) {
     return $resource('http://localhost:8080/reponses/', {
         //
     })
