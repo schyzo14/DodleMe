@@ -30,20 +30,6 @@ var getEvenement = function (id) {
     return listeEvenement[id];
 }
 
-<<<<<<< HEAD
-var getListe = function() {
-    return listeEvenement;
-}
-
-var getReponses = function(id) {
-    return listeEvenement[id].listeReponses;
-}
-
-exports.creerEvenement = creerEvenement;
-exports.getEvenement = getEvenement;
-exports.getListe = getListe;
-exports.getReponses = getReponses;
-=======
 //Liste des evenements
 var getListe = function (){
     return listeEvenement;
@@ -52,4 +38,3 @@ var getListe = function (){
 exports.creerEvenement = creerEvenement;
 exports.getEvenement = getEvenement;
 exports.getListe = getListe;
->>>>>>> 4fdc6325983cc8a2e744526b1352b48477c4c225

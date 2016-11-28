@@ -5,21 +5,11 @@
 		<tr>
 			<th>Id</th>
 			<th>Nom</th>
-<<<<<<< HEAD
-      <th>Descriptif</th>
-      <th></th>
-=======
->>>>>>> 4fdc6325983cc8a2e744526b1352b48477c4c225
 		</tr>
 		<tr ng-repeat="evenement in evenements">
 			<td>{{evenement.id}}</td>
 			<td>{{evenement.nom}}</td>
-<<<<<<< HEAD
-      <td>{{evenement.descriptif}}</td>
-      <td><a ng-href="#/detailEvenements?idE={{evenement.id}}"><button type="button" class="btn btn-primary">Détail</button></a></td>
-=======
             <td><button type="button" class="btn btn-primary" ng-click="repondreEvenement(evenement.id)">Répondre</button></td>
->>>>>>> 4fdc6325983cc8a2e744526b1352b48477c4c225
 		</tr>
 	</table>
 </div>
