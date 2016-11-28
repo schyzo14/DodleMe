@@ -12,4 +12,6 @@ angular.module('clientApp')
     return $resource('http://localhost:8080/evenement/', {
         
     })
-  });
+  })
+
+;
