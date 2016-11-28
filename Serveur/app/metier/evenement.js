@@ -1,4 +1,6 @@
 var listeEvenement = {};
+element1 = new Element(1, "unElement", "descriptif");
+listeEvenement[1] = element1;
 
 function Evenement(id, nom, descriptif) {
     this.id = id;
@@ -9,7 +11,7 @@ function Evenement(id, nom, descriptif) {
 }
 
 // créer un nouveau événement
-var creerEvenement = function(id, nom, descriptif) {
+var creerEvenement = function (id, nom, descriptif) {
 	// s'il n'existe pas
 	if (typeof listeEvenement[id] === 'undefined') {
 		// ajout de l'evenement
@@ -20,7 +22,7 @@ var creerEvenement = function(id, nom, descriptif) {
 }
 
 // recupérer événement
-var getEvenement = function(id) {
+var getEvenement = function (id) {
 	// s'il n'existe pas
 	if (typeof listeEvenement[id] === 'undefined') {
 		return 0;
@@ -28,6 +30,7 @@ var getEvenement = function(id) {
     return listeEvenement[id];
 }
 
+<<<<<<< HEAD
 var getListe = function() {
     return listeEvenement;
 }
@@ -40,3 +43,13 @@ exports.creerEvenement = creerEvenement;
 exports.getEvenement = getEvenement;
 exports.getListe = getListe;
 exports.getReponses = getReponses;
+=======
+//Liste des evenements
+var getListe = function (){
+    return listeEvenement;
+}
+
+exports.creerEvenement = creerEvenement;
+exports.getEvenement = getEvenement;
+exports.getListe = getListe;
+>>>>>>> 4fdc6325983cc8a2e744526b1352b48477c4c225
