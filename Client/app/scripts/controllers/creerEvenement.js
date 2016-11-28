@@ -9,14 +9,14 @@
  */
 angular.module('clientApp')
   .controller('CreerEvenementCtrl', ['$scope', 'eventFactory', '$location', function ($scope, eventFactory) {
-    eventFactory.post();
+    //eventFactory.post();
       
-    $scope.creerEvenement = function(form) {
+    $scope.creerEvenement = function (form) {
         if (form.$valid) {
             // Copier l'instance du flux 
             var form = angular.copy(form);
             
-            alert("form"+form);
+            alert("form : " + form);
         }
     };
       
