@@ -4,11 +4,12 @@
 	<table class="table table-hover">
 		<tr>
 			<th>Id</th>
-			<th>Solde</th>
+			<th>Nom</th>
 		</tr>
 		<tr ng-repeat="evenement in evenements">
 			<td>{{evenement.id}}</td>
 			<td>{{evenement.nom}}</td>
+            <td><button type="button" class="btn btn-primary" ng-click="repondreEvenement(evenement.id)">Répondre</button></td>
 		</tr>
 	</table>
 </div>
