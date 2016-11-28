@@ -15,4 +15,4 @@ angular.module('clientApp')
 	eventsfactory.get().$promise.then(function(data) {
 		$scope.evenement = data;
 	});
-  });
+  }]);
