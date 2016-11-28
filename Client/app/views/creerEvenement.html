@@ -1,36 +1,25 @@
 <script src="views/calendar.js"></script>
-<link rel="stylesheet" href="calendar.js">
+<link rel="stylesheet" href="styles/calendar.css">
 
 <div>
+    <form name="creerEvenementForm" novalidate>
     
-    <h1>Créer un évènement</h1><br /><br />
-    
-    <label>Nom de l'événement : </label><input type="text" id="nom" ng-model="nom" /><br />
-    <label>Descriptif : </label><input type="text" id="descriptif" ng-model="descriptif" /><br /><br />
-    
-    <label>Choisir des dates : </label><br />
-    
-    <calendar selected="day"></calendar>
-    
-        <div class="header">
-            <i class="fa fa-angle-left" ng-click="previous()"></i>
-            <span>{{month.format("MMMM, YYYY")}}</span>
-            <i class="fa fa-angle-right" ng-click="next()"></i>
-        </div>
-        <div class="week names">
-            <span class="day">Sun</span>
-            <span class="day">Mon</span>
-            <span class="day">Tue</span>
-            <span class="day">Wed</span>
-            <span class="day">Thu</span>
-            <span class="day">Fri</span>
-            <span class="day">Sat</span>
-        </div>
-        <div class="week" ng-repeat="week in weeks">
-            <span class="day" ng-class="{ today: day.isToday, 'different-month': !day.isCurrentMonth, selected: day.date.isSame(selected) }" ng-click="select(day)" ng-repeat="day in week.days">{{day.number}}</span>
-        </div>
-    
-    
-    <label>Choisir des créneaux : </label><br />
-    
+        <h1>Créer un évènement</h1><br /><br />
+
+        <label>Nom de l'événement : </label><input type="text" id="nom" ng-model="nom" /><br />
+        <label>Descriptif : </label><input type="text" id="descriptif" ng-model="descriptif" /><br /><br />
+
+        <label>Choisir des dates : </label><br />
+
+
+        <md-content layout-padding>
+            <md-datepicker ng-model="myDate" md-placeholder="Choisir une date"></md-datepicker>
+        </md-content>
+
+
+        <label>Choisir des créneaux : </label><br /><br />
+
+
+        <button ng-click="creerEvenement(creerEvenementForm)">Créer l'évenement !</button>
+    </form>
 </div>
