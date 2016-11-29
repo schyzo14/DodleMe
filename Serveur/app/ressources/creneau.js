@@ -8,7 +8,7 @@ router.post(
         if(creneau.ajouterCreneau(req.body.heure, req.body.date, req.params.idE) == 1) {
             res.json("OK");
         } else {
-            res.json("echec");
+            res.json("echec : heure="+req.body.heure+" date="+ req.body.date+" idE="+ req.params.idE);
         }
     }
 );

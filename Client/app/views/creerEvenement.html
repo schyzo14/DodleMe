@@ -12,11 +12,45 @@
         <input type="text" class="form-control" id="descriptif" ng-model="data.descriptif" /><br />
 
         <label>Choix de la date et de l'heure : </label>
-        <input id="datetimepicker" class="form-control" type="text" ng-model="data.date"/><br /><br />
+        <button type="button" class="btn btn-success btn-block" id="ajoutDate">Ajouter une date</button>
         <script>
-            $.datetimepicker.setLocale('en');
-            $('#datetimepicker').datetimepicker();
+            var i=1;
+            
+            document.getElementById('ajoutDate').addEventListener("click", function() {
+                var div = document.getElementById('divDate');
+                
+                var newInput = document.createElement('input');
+                newInput.setAttribute('id','datetimepicker'+i);
+                i=i+1;
+                newInput.setAttribute('class','form-control ng-valid ng-empty ng-dirty ng-valid-parse ng-touched');
+                newInput.setAttribute('type','text');
+                newInput.setAttribute('ng-model','data.date');
+                
+                div.appendChild(newInput);
+                
+                if (i==1) {$('#datetimepicker1').datetimepicker();}
+                if (i==2) {$('#datetimepicker2').datetimepicker();}
+                if (i==3) {$('#datetimepicker3').datetimepicker();}
+                if (i==4) {$('#datetimepicker4').datetimepicker();}
+                if (i==5) {$('#datetimepicker5').datetimepicker();}
+                if (i==6) {$('#datetimepicker6').datetimepicker();}
+                if (i==7) {$('#datetimepicker7').datetimepicker();}
+                if (i==8) {$('#datetimepicker8').datetimepicker();}
+                if (i==9) {$('#datetimepicker9').datetimepicker();}
+                
+            }, false);
+            
+                $.datetimepicker.setLocale('en');
+                $('#datetimepicker0').datetimepicker();
+        
+            
         </script>
+        
+        <br />
+        <div id="divDate">
+            <input id="datetimepicker0" class="form-control" type="text" ng-model="data.date"/><br /><br />
+        </div>
+        
         
 
         <button type="button" class="btn btn-success btn-block" ng-click="creerEvenementF(creerEvenementForm)">Créer l'évenement !</button><br />
