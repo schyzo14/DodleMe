@@ -1,24 +1,26 @@
-<script src="views/calendar.js"></script>
-<link rel="stylesheet" href="styles/calendar.css">
+
+<style>
+    #creerEvenementForm .form-control-feedback {
+    top: 0;
+    right: -15px;
+}
+</style>
 
 <div>
-    <form name="creerEvenementForm" novalidate>
+    <form name="creerEvenementForm" >
     
         <h1>Créer un évènement</h1><br /><br />
 
         <label>Nom de l'événement : </label><input type="text" id="nom" ng-model="nom" /><br />
         <label>Descriptif : </label><input type="text" id="descriptif" ng-model="descriptif" /><br /><br />
+        
 
-        <label>Choisir des dates : </label><br />
-
-
-        <md-content layout-padding>
-            <md-datepicker ng-model="myDate" md-placeholder="Choisir une date"></md-datepicker>
-        </md-content>
-
-
-        <label>Choisir des créneaux : </label><br /><br />
-
+        <label>Choix de la date et de l'heure : </label><input id="datetimepicker" type="text" /><br /><br />
+        <script>
+            $.datetimepicker.setLocale('en');
+            $('#datetimepicker').datetimepicker();
+        </script>
+        
 
         <button type="button" class="btn btn-success btn-block" ng-click="creerEvenementF(creerEvenementForm)">Créer l'évenement !</button>
     </form>
