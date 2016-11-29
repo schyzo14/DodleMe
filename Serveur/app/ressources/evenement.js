@@ -6,11 +6,9 @@ var router = express.Router();
 // POST
 router.post(
     '/', function(req, res) {
-        if(evenement.creerEvenement (req.body.id, req.body.nom, req.body.descriptif) == 1) {
-            res.json("OK");
-        } else {
-            res.json("echec");
-        }
+
+        res.json(evenement.creerEvenement (req.body.nom, req.body.descriptif));
+
     }
 );
 

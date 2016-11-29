@@ -1,6 +1,7 @@
 var listeEvenement = {};
 var element1 = new Evenement(1, "unElement", "descriptif");
 listeEvenement[1] = element1;
+var lastIdEv = 1;
 
 function Evenement(id, nom, descriptif) {
     this.id = id;
@@ -11,14 +12,12 @@ function Evenement(id, nom, descriptif) {
 }
 
 // créer un nouveau événement
-var creerEvenement = function (id, nom, descriptif) {
+var creerEvenement = function (nom, descriptif) {
 	// s'il n'existe pas
-	if (typeof listeEvenement[id] === 'undefined') {
-		// ajout de l'evenement
-		listeEvenement[id] = new Evenement(id, nom, descriptif);
-		return 1;
-    }
-    return 0;
+    var id = lastIdEv+1;
+    listeEvenement[id] = new Evenement(id, nom, descriptif);
+    lastIdEv = lastIdEv+1;
+    return id;
 }
 
 // recupérer événement

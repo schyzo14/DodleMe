@@ -1,3 +1,7 @@
+var listeEvenement = require('../metier/evenement.js');
+
+var lastId = 0;
+
 // Constructeur pour les créneaux
 function Creneau(id, heure, date) {
     // id du créneau
@@ -11,17 +15,16 @@ function Creneau(id, heure, date) {
 };
 
 // Ajouter un créneau
-var ajouterCreneau = function(idC, heure, date, idE) {
+var ajouterCreneau = function(heure, date, idE) {
+    var idC = lastId+1;
+    lastId = lastId+1;
+    
     // liste des creneaux de l'evenement
     var listeCreneau = {};
     listeCreneau = listeEvenement[idE].listeCreneau;
-    // si le creneau n'existe pas
-    if (typeof listeCreneau[idC] === 'undefined') {
-        listeCreneau[idC] = new Creneau(idC, heure, date);
-        listeEvenement[idE].listeCreneau = listeCreneau;
-        return 1;
-    }
-    return 0;
+    listeCreneau[idC] = new Creneau(idC, heure, date);
+    listeEvenement[idE].listeCreneau = listeCreneau;
+    return 1;
 };
 
 // fonctions exportés
