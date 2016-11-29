@@ -8,11 +8,11 @@
  * Controller of the clientApp
  */
 angular.module('clientApp')
-  .controller('MainCtrl', ['$scope', 'eventsfactory', '$location', function ($scope, eventsfactory) {
+  .controller('MainCtrl', ['$scope', 'EventsFactory', '$location', function ($scope, EventsFactory) {
 
     $('#main').addClass('active');
 	
-	eventsfactory.get().$promise.then(function(data) {
-		$scope.evenement = data;
+	EventsFactory.get().$promise.then(function(data) {
+		$scope.evenements = data;
 	});
   }]);

@@ -1,6 +1,6 @@
 var listeEvenement = {};
-//element1 = new Element(1, "unElement", "descriptif");
-//listeEvenement[1] = element1;
+var element1 = new Evenement(1, "unElement", "descriptif");
+listeEvenement[1] = element1;
 
 function Evenement(id, nom, descriptif) {
     this.id = id;

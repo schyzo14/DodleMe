@@ -1,15 +1,16 @@
-<div class="container">
-    <button type="button" class="btn btn-primary" ng-click="creerEvenement()">Créer un évènement</button>
-    <h2>Tous les évènements</h2>
+<div class="container text-center">
+    <a href="#/creerEvenement"><button type="button" class="btn btn-primary btn-lg" ng-click="creerEvenement()">Créer un événement</button></a>
+    <h2>Tous les événements</h2>
 	<table class="table table-hover">
 		<tr>
 			<th>Id</th>
 			<th>Nom</th>
+            <th></th>
 		</tr>
 		<tr ng-repeat="evenement in evenements">
 			<td>{{evenement.id}}</td>
 			<td>{{evenement.nom}}</td>
-            <td><button type="button" class="btn btn-primary" ng-click="repondreEvenement(evenement.id)">Répondre</button></td>
+            <td><a href="#/detailEvenements"><button type="button" class="btn btn-primary" ng-click="repondreEvenement(evenement.id)">Répondre</button></a></td>
 		</tr>
 	</table>
 </div>

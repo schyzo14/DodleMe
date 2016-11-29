@@ -82,6 +82,10 @@ body {
   }
 }
 
+.table th {
+   text-align: center;   
+}
+
 
 /* Calendar */
 .datepickerdemoBasicUsage {
