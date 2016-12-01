@@ -18,7 +18,6 @@ angular.module('clientApp')
     };
     $scope.today();
     
-    
     /** Mettre la date dans le tableau **/
     
     $scope.listDates = new Array();
@@ -29,22 +28,19 @@ angular.module('clientApp')
         /** Pas le jour présélectionné **/
         if (cpt != 0) {
             /** Pas de duplication des dates **/
- //           var sorted_listDates = $scope.listDates.slice().sort();
-//            var trouve = new Boolean(false);
-//            for (var i = 0; i < $scope.listDates.length - 1; i++) {
-//                alert(sorted_listDates[i]);
-//                if (sorted_listDates[i] == $scope.dt.toLocaleDateString('fr-FR')) {
-//                    trouve = new Boolean(true);
-//                }
-//            }
+            var sorted_listDates = $scope.listDates.slice().sort();
+            var trouve = new Boolean(false);
+            alert("taille : "+ $scope.listDates.length);
+            for (var i = 0; i < $scope.listDates.length; i++) {
+                alert(sorted_listDates[i].toString().trim() + " - " + $scope.dt.toLocaleDateString('fr-FR').toString().trim());
+                if (sorted_listDates[i] == $scope.dt.toLocaleDateString('fr-FR')) {
+                    trouve = true;
+                }
+            }
             /** Si pas de duplication, on ajoute la date **/
-//            if (trouve !== true) {
-              
-//              alert("! trouve");
+            if (trouve !== true) {
                 $scope.listDates.push($scope.dt.toLocaleDateString('fr-FR'));
-//            } else {
-//                alert("trouve");
-//            }
+            } 
         }
         cpt = cpt+1;
     });
