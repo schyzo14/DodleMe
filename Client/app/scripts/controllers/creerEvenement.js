@@ -30,9 +30,7 @@ angular.module('clientApp')
             /** Pas de duplication des dates **/
             var sorted_listDates = $scope.listDates.slice().sort();
             var trouve = new Boolean(false);
-            alert("taille : "+ $scope.listDates.length);
             for (var i = 0; i < $scope.listDates.length; i++) {
-                alert(sorted_listDates[i].toString().trim() + " - " + $scope.dt.toLocaleDateString('fr-FR').toString().trim());
                 if (sorted_listDates[i] == $scope.dt.toLocaleDateString('fr-FR')) {
                     trouve = true;
                 }
@@ -66,31 +64,80 @@ angular.module('clientApp')
                    descriptif: $scope.data.descriptif}
             }).
             success(function(data, status){
-                alert("OK");
-            
+                alert("OK création évènement");
+                
                 var idE = data;
-                var dateTime = $scope.data.date;
-                var date = dateTime.substring(0, 10);
-                var heure = dateTime.substring(11, 16);
             
-                /* Ajouter les jalons */
-                $http({
-                     method: 'POST',
-                     url: 'http://localhost:8080/creneau/'+idE,
-                     headers: {
-                       'Content-Type': 'application/json'
-                     },
-                     data: { 
-                           heure: heure,
-                           date: date
-                    }}).
-                    success(function(data, status){
-                        alert("OK : "+data + " - "+ status);
-                    }).
-                    error(function(data, status){
-                        alert("Echec : "+data + " - "+ status);
-                    });
+                var arrayLignes = document.getElementById("tableDate").rows;
+                var longueur = arrayLignes.length;
+                for(var i=0; i<longueur; i++) {
+                    var arrayColonnes = arrayLignes[i].cells;
+                    var date = arrayColonnes[0].innerHTML;
+                    var creneau1 = arrayColonnes[1].children[0].options[arrayColonnes[1].children[0].selectedIndex].value;
+                    var creneau2 = arrayColonnes[2].children[0].options[arrayColonnes[2].children[0].selectedIndex].value;
+                    var creneau3 = arrayColonnes[3].children[0].options[arrayColonnes[3].children[0].selectedIndex].value;
+                    if (creneau1 !== "Pas de créneau choisi") {
+                        alert(date + " - "+ creneau1);
+                        /** ajouter creneau 1 **/
+                        $http({
+                             method: 'POST',
+                             url: 'http://localhost:8080/creneau/'+idE,
+                             headers: {
+                               'Content-Type': 'application/json'
+                             },
+                             data: { 
+                                   heure: creneau1,
+                                   date: date
+                            }}).
+                            success(function(data, status){
+                                alert("OK créneau : "+data + " - "+ status);
+                            }).
+                            error(function(data, status){
+                                alert("Echec : "+data + " - "+ status);
+                            });
 
+                    }
+                    if (creneau2 !== "Pas de créneau choisi") {
+                        alert(date + " - "+ creneau2);
+                        /** ajouter creneau 2 **/
+                        $http({
+                             method: 'POST',
+                             url: 'http://localhost:8080/creneau/'+idE,
+                             headers: {
+                               'Content-Type': 'application/json'
+                             },
+                             data: { 
+                                   heure: creneau2,
+                                   date: date
+                            }}).
+                            success(function(data, status){
+                                alert("OK créneau : "+data + " - "+ status);
+                            }).
+                            error(function(data, status){
+                                alert("Echec : "+data + " - "+ status);
+                            });
+                    }
+                    if (creneau3 !== "Pas de créneau choisi") {
+                        alert(date + " - "+ creneau3);
+                        /** ajouter creneau 3 **/
+                        $http({
+                             method: 'POST',
+                             url: 'http://localhost:8080/creneau/'+idE,
+                             headers: {
+                               'Content-Type': 'application/json'
+                             },
+                             data: { 
+                                   heure: creneau3,
+                                   date: date
+                            }}).
+                            success(function(data, status){
+                                alert("OK créneau : "+data + " - "+ status);
+                            }).
+                            error(function(data, status){
+                                alert("Echec : "+data + " - "+ status);
+                            });
+                    }
+                }
             }).
             error(function(data, status){
                 alert("Echec : "+data + " - "+ status);
