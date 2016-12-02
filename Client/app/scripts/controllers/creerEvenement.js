@@ -10,9 +10,8 @@
 angular.module('clientApp')
 
   .controller('CreerEvenementCtrl', ['$location', '$scope', 'eventFactory', '$http', function ($location, $scope, eventFactory, $http) {
-      
+    
     /** Calendrier **/
-      
     $scope.today = function() {
         $scope.dt = new Date();
     };
@@ -20,7 +19,7 @@ angular.module('clientApp')
     
     /** Mettre la date dans le tableau **/
     
-    $scope.listDates = new Array();
+    $scope.listDates = [];
     var cpt=0;
       
     $scope.$watch('dt',function()
@@ -38,7 +37,7 @@ angular.module('clientApp')
             /** Si pas de duplication, on ajoute la date **/
             if (trouve !== true) {
                 $scope.listDates.push($scope.dt.toLocaleDateString('fr-FR'));
-            } 
+            }
         }
         cpt = cpt+1;
     });
@@ -62,97 +61,130 @@ angular.module('clientApp')
         
         var formV = angular.copy(form);
         
-        /* Créer l'évènement */
-        $http({
-             method: 'POST',
-             url: 'http://localhost:8080/evenement/',
-             headers: {
-               'Content-Type': 'application/json'
-             },
-             data: { 
-                   nom: $scope.data.nom,
-                   descriptif: $scope.data.descriptif}
-            }).
-            success(function(data, status){
-                alert("L'évènement a été créé !");
-                
-                var idE = data;
+        /** Test si tous les champs sont complétés */
+        if (form.$valid) {
             
+            /** Test si il y a une date **/
+            if ($scope.listDates.length === 0) {
+                alert("Merci de choisir une date avec un créneau")
+            } else {
+                
+                /** Test si un créneau est sélectionné **/
                 var arrayLignes = document.getElementById("tableDate").rows;
                 var longueur = arrayLignes.length;
+                var taille = 0;
                 for(var i=0; i<longueur; i++) {
                     var arrayColonnes = arrayLignes[i].cells;
-                    var date = arrayColonnes[0].innerHTML;
                     var creneau1 = arrayColonnes[1].children[0].options[arrayColonnes[1].children[0].selectedIndex].value;
                     var creneau2 = arrayColonnes[2].children[0].options[arrayColonnes[2].children[0].selectedIndex].value;
                     var creneau3 = arrayColonnes[3].children[0].options[arrayColonnes[3].children[0].selectedIndex].value;
-                    if (creneau1 !== "Pas de créneau choisi") {
-                        /** ajouter creneau 1 **/
-                        $http({
-                             method: 'POST',
-                             url: 'http://localhost:8080/creneau/'+idE,
-                             headers: {
-                               'Content-Type': 'application/json'
-                             },
-                             data: { 
-                                   heure: creneau1,
-                                   date: date
-                            }}).
-                            success(function(data, status){
-                                alert("Le créneau " + date + " - " + creneau1 + " créé !" );
-                            }).
-                            error(function(data, status){
-                                alert(status + " - Echec lors de la création du créneau : " + date + " - " + creneau1);
-                            });
-
-                    }
-                    if (creneau2 !== "Pas de créneau choisi") {
-                        alert(date + " - "+ creneau2);
-                        /** ajouter creneau 2 **/
-                        $http({
-                             method: 'POST',
-                             url: 'http://localhost:8080/creneau/'+idE,
-                             headers: {
-                               'Content-Type': 'application/json'
-                             },
-                             data: { 
-                                   heure: creneau2,
-                                   date: date
-                            }}).
-                            success(function(data, status){
-                                alert("Le créneau " + date + " - " + creneau2 + " créé !" );
-                            }).
-                            error(function(data, status){
-                                alert(status + " - Echec lors de la création du créneau : " + date + " - " + creneau2);
-                            });
-                    }
-                    if (creneau3 !== "Pas de créneau choisi") {
-                        alert(date + " - "+ creneau3);
-                        /** ajouter creneau 3 **/
-                        $http({
-                             method: 'POST',
-                             url: 'http://localhost:8080/creneau/'+idE,
-                             headers: {
-                               'Content-Type': 'application/json'
-                             },
-                             data: { 
-                                   heure: creneau3,
-                                   date: date
-                            }}).
-                            success(function(data, status){
-                                alert("Le créneau " + date + " - " + creneau3 + " créé !" );
-                            }).
-                            error(function(data, status){
-                                alert(status + " - Echec lors de la création du créneau : " + date + " - " + creneau3);
-                            });
+                    if (creneau1 !== "Pas de créneau choisi" || creneau2 !== "Pas de créneau choisi" || creneau3 !== "Pas de créneau choisi") {
+                        taille = taille +1;
                     }
                 }
-                /** redirection page de détail **/
-                $location.path('/detailEvenements/'+idE);
-            }).
-            error(function(data, status){
-                alert("Echec lors de la création de l'évènement !");
-            });
+                if (taille === 0) {
+                    alert ("Merci de mettre au moins un créneau !");
+                } else {
+                
+                    /* Créer l'évènement */
+                    $http({
+                         method: 'POST',
+                         url: 'http://localhost:8080/evenement/',
+                         headers: {
+                           'Content-Type': 'application/json'
+                         },
+                         data: { 
+                               nom: $scope.data.nom,
+                               descriptif: $scope.data.descriptif}
+                        }).
+                        success(function(data, status){
+                            alert("L'évènement a été créé !");
+
+                            var idE = data;
+
+                            var arrayLignes = document.getElementById("tableDate").rows;
+                            var longueur = arrayLignes.length;
+                            /* Parcours des lignes du tableau */
+                            for(var i=0; i<longueur; i++) {
+                                var arrayColonnes = arrayLignes[i].cells;
+                                var date = arrayColonnes[0].innerHTML;
+                                var creneau1 = arrayColonnes[1].children[0].options[arrayColonnes[1].children[0].selectedIndex].value;
+                                var creneau2 = arrayColonnes[2].children[0].options[arrayColonnes[2].children[0].selectedIndex].value;
+                                var creneau3 = arrayColonnes[3].children[0].options[arrayColonnes[3].children[0].selectedIndex].value;
+                                if (creneau1 !== "Pas de créneau choisi") {
+                                    /** ajouter creneau 1 **/
+                                    $http({
+                                         method: 'POST',
+                                         url: 'http://localhost:8080/creneau/'+idE,
+                                         headers: {
+                                           'Content-Type': 'application/json'
+                                         },
+                                         data: { 
+                                               heure: creneau1,
+                                               date: date
+                                        }}).
+                                        success(function(data, status){
+                                            alert("Le créneau " + date + " - " + creneau1 + " créé !" );
+                                        }).
+                                        error(function(data, status){
+                                            alert(status + " - Echec lors de la création du créneau : " + date + " - " + creneau1);
+                                        });
+
+                                }
+                                if (creneau2 !== "Pas de créneau choisi") {
+                                    alert(date + " - "+ creneau2);
+                                    /** ajouter creneau 2 **/
+                                    $http({
+                                         method: 'POST',
+                                         url: 'http://localhost:8080/creneau/'+idE,
+                                         headers: {
+                                           'Content-Type': 'application/json'
+                                         },
+                                         data: { 
+                                               heure: creneau2,
+                                               date: date
+                                        }}).
+                                        success(function(data, status){
+                                            alert("Le créneau " + date + " - " + creneau2 + " créé !" );
+                                        }).
+                                        error(function(data, status){
+                                            alert(status + " - Echec lors de la création du créneau : " + date + " - " + creneau2);
+                                        });
+                                }
+                                if (creneau3 !== "Pas de créneau choisi") {
+                                    alert(date + " - "+ creneau3);
+                                    /** ajouter creneau 3 **/
+                                    $http({
+                                         method: 'POST',
+                                         url: 'http://localhost:8080/creneau/'+idE,
+                                         headers: {
+                                           'Content-Type': 'application/json'
+                                         },
+                                         data: { 
+                                               heure: creneau3,
+                                               date: date
+                                        }}).
+                                        success(function(data, status){
+                                            alert("Le créneau " + date + " - " + creneau3 + " créé !" );
+                                        }).
+                                        error(function(data, status){
+                                            alert(status + " - Echec lors de la création du créneau : " + date + " - " + creneau3);
+                                        });
+                                }
+                            }
+                            /** redirection page de détail **/
+                            $location.path('/detailEvenements/'+idE);
+
+                        }).
+                        error(function(data, status){
+                            alert("Echec lors de la création de l'évènement !");
+                        });
+                }
+            }
+            
+        } else {
+            alert ("Merci de compléter le nom et la description !");
+        }
     };
       
 }]);
