@@ -1,4 +1,15 @@
-
+<style>
+      .full button span {
+        background-color: limegreen;
+        border-radius: 32px;
+        color: black;
+      }
+      .partially button span {
+        background-color: orange;
+        border-radius: 32px;
+        color: black;
+      }   
+</style>
 
 <div>
     <form name="creerEvenementForm" >
@@ -12,47 +23,90 @@
         <input type="text" class="form-control" id="descriptif" ng-model="data.descriptif" /><br />
 
         <label>Choix de la date et de l'heure : </label>
-        <button type="button" class="btn btn-success btn-block" id="ajoutDate">Ajouter une date</button>
-        <script>
-            var i=1;
-            
-            document.getElementById('ajoutDate').addEventListener("click", function() {
-                var div = document.getElementById('divDate');
-                
-                var newInput = document.createElement('input');
-                newInput.setAttribute('id','datetimepicker'+i);
-                i=i+1;
-                newInput.setAttribute('class','form-control ng-valid ng-empty ng-dirty ng-valid-parse ng-touched');
-                newInput.setAttribute('type','text');
-                newInput.setAttribute('ng-model','data.date');
-                
-                div.appendChild(newInput);
-                
-                if (i==1) {$('#datetimepicker1').datetimepicker();}
-                if (i==2) {$('#datetimepicker2').datetimepicker();}
-                if (i==3) {$('#datetimepicker3').datetimepicker();}
-                if (i==4) {$('#datetimepicker4').datetimepicker();}
-                if (i==5) {$('#datetimepicker5').datetimepicker();}
-                if (i==6) {$('#datetimepicker6').datetimepicker();}
-                if (i==7) {$('#datetimepicker7').datetimepicker();}
-                if (i==8) {$('#datetimepicker8').datetimepicker();}
-                if (i==9) {$('#datetimepicker9').datetimepicker();}
-                
-            }, false);
-            
-                $.datetimepicker.setLocale('en');
-                $('#datetimepicker0').datetimepicker();
-        
-            
-        </script>
         
         <br />
-        <div id="divDate">
-            <input id="datetimepicker0" class="form-control" type="text" ng-model="data.date"/><br /><br />
-        </div>
-        
-        
+        <div ng-controller="CreerEvenementCtrl">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-6" style="display:inline-block; min-height:290px;">
+                        <div uib-datepicker ng-model="dt" class="well well-sm" datepicker-options="options"></div>
+                    </div>
+                    <div class="col-xs-6">
+                        <table id="tableDate" class="table table-striped table-condensed table-hover">
+                            <tr ng-repeat="date in listDates">
+                                <td>
+<!--                                    <button ng-click="supprimer(date)" type="button" class="btn btn-default btn-sm">
+                                        <span class="glyphicon glyphicon-trash"></span> 
+                                    </button> -->
+                                </td>
+                                <td>{{date}}</td>
+                                <td>
+                                    <SELECT id="creneau1" size="1">
+                                        <OPTION>Pas de créneau choisi</OPTION>
+                                        <OPTION>00:00</OPTION><OPTION>00:30</OPTION><OPTION>01:00</OPTION><OPTION>01:30</OPTION>
+                                        <OPTION>02:00</OPTION><OPTION>02:30</OPTION><OPTION>03:00</OPTION><OPTION>03:30</OPTION>
+                                        <OPTION>04:00</OPTION><OPTION>04:30</OPTION><OPTION>05:00</OPTION><OPTION>05:30</OPTION>
+                                        <OPTION>06:00</OPTION><OPTION>06:30</OPTION><OPTION>07:00</OPTION><OPTION>07:30</OPTION>
+                                        <OPTION>08:00</OPTION><OPTION>08:30</OPTION><OPTION>09:00</OPTION><OPTION>09:30</OPTION>
+                                        <OPTION>10:00</OPTION><OPTION>10:30</OPTION><OPTION>11:00</OPTION><OPTION>11:30</OPTION>
+                                        <OPTION>12:00</OPTION><OPTION>12:30</OPTION><OPTION>13:00</OPTION><OPTION>13:30</OPTION>
+                                        <OPTION>14:00</OPTION><OPTION>14:30</OPTION><OPTION>15:00</OPTION><OPTION>15:30</OPTION>
+                                        <OPTION>16:00</OPTION><OPTION>16:30</OPTION><OPTION>17:00</OPTION><OPTION>17:30</OPTION>
+                                        <OPTION>18:00</OPTION><OPTION>18:30</OPTION><OPTION>19:00</OPTION><OPTION>19:30</OPTION>
+                                        <OPTION>20:00</OPTION><OPTION>20:30</OPTION><OPTION>21:00</OPTION><OPTION>21:30</OPTION>
+                                        <OPTION>22:00</OPTION><OPTION>22:30</OPTION><OPTION>23:00</OPTION><OPTION>23:30</OPTION>
+                                    </SELECT>
+                                </td>
+                                <td>
+                                    <SELECT id="creneau2" size="1">
+                                        <OPTION>Pas de créneau choisi</OPTION>
+                                        <OPTION>00:00</OPTION><OPTION>00:30</OPTION><OPTION>01:00</OPTION><OPTION>01:30</OPTION>
+                                        <OPTION>02:00</OPTION><OPTION>02:30</OPTION><OPTION>03:00</OPTION><OPTION>03:30</OPTION>
+                                        <OPTION>04:00</OPTION><OPTION>04:30</OPTION><OPTION>05:00</OPTION><OPTION>05:30</OPTION>
+                                        <OPTION>06:00</OPTION><OPTION>06:30</OPTION><OPTION>07:00</OPTION><OPTION>07:30</OPTION>
+                                        <OPTION>08:00</OPTION><OPTION>08:30</OPTION><OPTION>09:00</OPTION><OPTION>09:30</OPTION>
+                                        <OPTION>10:00</OPTION><OPTION>10:30</OPTION><OPTION>11:00</OPTION><OPTION>11:30</OPTION>
+                                        <OPTION>12:00</OPTION><OPTION>12:30</OPTION><OPTION>13:00</OPTION><OPTION>13:30</OPTION>
+                                        <OPTION>14:00</OPTION><OPTION>14:30</OPTION><OPTION>15:00</OPTION><OPTION>15:30</OPTION>
+                                        <OPTION>16:00</OPTION><OPTION>16:30</OPTION><OPTION>17:00</OPTION><OPTION>17:30</OPTION>
+                                        <OPTION>18:00</OPTION><OPTION>18:30</OPTION><OPTION>19:00</OPTION><OPTION>19:30</OPTION>
+                                        <OPTION>20:00</OPTION><OPTION>20:30</OPTION><OPTION>21:00</OPTION><OPTION>21:30</OPTION>
+                                        <OPTION>22:00</OPTION><OPTION>22:30</OPTION><OPTION>23:00</OPTION><OPTION>23:30</OPTION>
+                                    </SELECT>
+                                </td>
+                                <td>
+                                     <SELECT id="creneau3" size="1">
+                                        <OPTION>Pas de créneau choisi</OPTION>
+                                        <OPTION>00:00</OPTION><OPTION>00:30</OPTION><OPTION>01:00</OPTION><OPTION>01:30</OPTION>
+                                        <OPTION>02:00</OPTION><OPTION>02:30</OPTION><OPTION>03:00</OPTION><OPTION>03:30</OPTION>
+                                        <OPTION>04:00</OPTION><OPTION>04:30</OPTION><OPTION>05:00</OPTION><OPTION>05:30</OPTION>
+                                        <OPTION>06:00</OPTION><OPTION>06:30</OPTION><OPTION>07:00</OPTION><OPTION>07:30</OPTION>
+                                        <OPTION>08:00</OPTION><OPTION>08:30</OPTION><OPTION>09:00</OPTION><OPTION>09:30</OPTION>
+                                        <OPTION>10:00</OPTION><OPTION>10:30</OPTION><OPTION>11:00</OPTION><OPTION>11:30</OPTION>
+                                        <OPTION>12:00</OPTION><OPTION>12:30</OPTION><OPTION>13:00</OPTION><OPTION>13:30</OPTION>
+                                        <OPTION>14:00</OPTION><OPTION>14:30</OPTION><OPTION>15:00</OPTION><OPTION>15:30</OPTION>
+                                        <OPTION>16:00</OPTION><OPTION>16:30</OPTION><OPTION>17:00</OPTION><OPTION>17:30</OPTION>
+                                        <OPTION>18:00</OPTION><OPTION>18:30</OPTION><OPTION>19:00</OPTION><OPTION>19:30</OPTION>
+                                        <OPTION>20:00</OPTION><OPTION>20:30</OPTION><OPTION>21:00</OPTION><OPTION>21:30</OPTION>
+                                        <OPTION>22:00</OPTION><OPTION>22:30</OPTION><OPTION>23:00</OPTION><OPTION>23:30</OPTION>
+                                    </SELECT>
+                                </td>
+                            </tr>
+                            <tr ng-if="listDates.length === 0">
+                                <td>Pas de date choisies...</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="row">
+                    <div>
+                        <button type="button" class="btn btn-sm btn-info" ng-click="today()">Aujourd'hui</button>
+                    </div>
+                </div>
+            </div>
 
+        </div><br /><br />
+ 
         <button type="button" class="btn btn-success btn-block" ng-click="creerEvenementF(creerEvenementForm)">Créer l'évenement !</button><br />
     </form>
 </div>
