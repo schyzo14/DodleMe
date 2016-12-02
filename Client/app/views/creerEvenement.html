@@ -1,33 +1,35 @@
 <div>
     <form name="creerEvenementForm" >
     
-        <h1>Créer un évènement</h1><br /><br />
+        <h1>Créer un événement</h1><br /><br />
 
+        <!-- Nom de l'événement -->
         <label>Nom de l'événement : </label>
         <input type="text" class="form-control" id="nom" ng-model="data.nom" required type="text"/><br />
         
+        <!-- Descriptif de l'évènement -->
         <label>Descriptif : </label>
         <input type="text" class="form-control" id="descriptif" ng-model="data.descriptif" required type="text"/><br />
 
-        <label>Choix de la date et de l'heure : </label>
+        <label>Choix de dates et d'heures : </label>
         
         <br />
         <div>
             <div class="container">
                 <div class="row">
                     <div class="col-xs-6" style="display:inline-block; min-height:290px;">
+                        <!-- Calendrier -->
                         <div uib-datepicker ng-model="dt" class="well well-sm" datepicker-options="options"></div>
                     </div>
                     <div class="col-xs-6">
+                        <!-- Liste des dates choisies --> 
                         <table id="tableDate" class="table table-striped table-condensed table-hover">
+                            <!-- Parcours des dates -->
                             <tr ng-repeat="date in listDates">
-<!--                                 <td>
-                                   <button ng-click="supprimer(date)" type="button" class="btn btn-default btn-sm">
-                                        <span class="glyphicon glyphicon-trash"></span> 
-                                    </button> 
-                                </td>-->
+                                <!-- Date sélectionnée -->
                                 <td>{{date}}</td>
                                 <td>
+                                    <!-- 1er créneau proposé -->
                                     <SELECT id="creneau1" size="1">
                                         <OPTION>Pas de créneau choisi</OPTION>
                                         <OPTION>00:00</OPTION><OPTION>00:30</OPTION><OPTION>01:00</OPTION><OPTION>01:30</OPTION>
@@ -45,6 +47,7 @@
                                     </SELECT>
                                 </td>
                                 <td>
+                                    <!-- 2eme créneau proposé -->
                                     <SELECT id="creneau2" size="1">
                                         <OPTION>Pas de créneau choisi</OPTION>
                                         <OPTION>00:00</OPTION><OPTION>00:30</OPTION><OPTION>01:00</OPTION><OPTION>01:30</OPTION>
@@ -62,6 +65,7 @@
                                     </SELECT>
                                 </td>
                                 <td>
+                                     <!-- 3eme créneau proposé -->
                                      <SELECT id="creneau3" size="1">
                                         <OPTION>Pas de créneau choisi</OPTION>
                                         <OPTION>00:00</OPTION><OPTION>00:30</OPTION><OPTION>01:00</OPTION><OPTION>01:30</OPTION>
@@ -79,8 +83,9 @@
                                     </SELECT>
                                 </td>
                             </tr>
+                            <!-- Pas de date choisie dans le calendrier -->
                             <tr ng-if="listDates.length === 0">
-                                <td>Pas de date choisies...</td>
+                                <td>Pas de date choisie...</td>
                             </tr>
                         </table>
                     </div>
@@ -89,6 +94,7 @@
 
         </div><br />
  
-        <button type="button" class="btn btn-success btn-block" ng-click="creerEvenementF(creerEvenementForm)">Créer l'évenement !</button><br />
+        <!-- Bouton pour créer l'événement et y ajouter les créneaux -->
+        <button type="button" class="btn btn-success btn-block" ng-click="creerEvenementF(creerEvenementForm)">Créer l'événement !</button><br />
     </form>
 </div>
