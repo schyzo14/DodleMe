@@ -43,6 +43,16 @@ angular.module('clientApp')
         cpt = cpt+1;
     });
     
+      
+    /** Bouton supprimer date **/
+    $scope.supprimer = function (dateP) {
+        for (var i = 0; i < $scope.listDates.length; i++) {
+            if ($scope.listDates[i].toString().trim() === dateP.toString().trim()) {
+                delete $scope.listDates[i];
+            }
+        }
+    }
+    
     
     /** Bouton créer l'évènement **/
       
@@ -64,7 +74,7 @@ angular.module('clientApp')
                    descriptif: $scope.data.descriptif}
             }).
             success(function(data, status){
-                alert("OK création évènement");
+                alert("L'évènement a été créé !");
                 
                 var idE = data;
             
@@ -77,7 +87,6 @@ angular.module('clientApp')
                     var creneau2 = arrayColonnes[2].children[0].options[arrayColonnes[2].children[0].selectedIndex].value;
                     var creneau3 = arrayColonnes[3].children[0].options[arrayColonnes[3].children[0].selectedIndex].value;
                     if (creneau1 !== "Pas de créneau choisi") {
-                        alert(date + " - "+ creneau1);
                         /** ajouter creneau 1 **/
                         $http({
                              method: 'POST',
@@ -90,10 +99,10 @@ angular.module('clientApp')
                                    date: date
                             }}).
                             success(function(data, status){
-                                alert("OK créneau : "+data + " - "+ status);
+                                alert("Le créneau " + date + " - " + creneau1 + " créé !" );
                             }).
                             error(function(data, status){
-                                alert("Echec : "+data + " - "+ status);
+                                alert(status + " - Echec lors de la création du créneau : " + date + " - " + creneau1);
                             });
 
                     }
@@ -111,10 +120,10 @@ angular.module('clientApp')
                                    date: date
                             }}).
                             success(function(data, status){
-                                alert("OK créneau : "+data + " - "+ status);
+                                alert("Le créneau " + date + " - " + creneau2 + " créé !" );
                             }).
                             error(function(data, status){
-                                alert("Echec : "+data + " - "+ status);
+                                alert(status + " - Echec lors de la création du créneau : " + date + " - " + creneau2);
                             });
                     }
                     if (creneau3 !== "Pas de créneau choisi") {
@@ -131,16 +140,18 @@ angular.module('clientApp')
                                    date: date
                             }}).
                             success(function(data, status){
-                                alert("OK créneau : "+data + " - "+ status);
+                                alert("Le créneau " + date + " - " + creneau3 + " créé !" );
                             }).
                             error(function(data, status){
-                                alert("Echec : "+data + " - "+ status);
+                                alert(status + " - Echec lors de la création du créneau : " + date + " - " + creneau3);
                             });
                     }
                 }
+                /** redirection page de détail **/
+                $location.path('/detailEvenements/'+idE);
             }).
             error(function(data, status){
-                alert("Echec : "+data + " - "+ status);
+                alert("Echec lors de la création de l'évènement !");
             });
     };
       
