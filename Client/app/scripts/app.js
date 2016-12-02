@@ -40,6 +40,11 @@ angular
         controller: 'DetailEvenementsCtrl',
         controllerAs: 'detailEvenements'
       })
+      .when('/creerProfil', {
+        templateUrl: 'views/creerProfil.html',
+        controller: 'CreerProfilCtrl',
+        controllerAs: 'creerProfil'
+      })
       .otherwise({
         redirectTo: '/'
       });
