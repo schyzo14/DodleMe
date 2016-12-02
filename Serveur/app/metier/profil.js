@@ -1,6 +1,6 @@
 var listeProfil = {};
-var lastIdProfil = 2;
-var unProfil = new Profil(1, "nom", "prenom", "nomUtilTest");
+var lastIdProfil = 1;
+var unProfil = new Profil(0, "nom", "prenom", "nomUtilTest");
 listeProfil[1] = unProfil;
 
 function Profil(id, nom, prenom, nomUtil){
@@ -22,9 +22,22 @@ var creerProfil = function (nom, prenom, nomUtil){
 //Récupérer un profil
 var getProfil = function(id){
     if(typeof listeProfil[id] === 'undefined'){
-        return 0;
+        return {};
     }
     return listeProfil[id];
+}
+
+//Récupérer un profil à partir de son nom
+var getProfilNom = function(nom){
+    var pas;
+    for(pas=0;listeProfil.length;pas++)
+    {
+        if(typeof listeProfil[pas].nom === 'undefined'){
+            return {};
+        }else{
+            return listeProfil[id];
+        }
+    } 
 }
 
 //Liste des profils
@@ -34,4 +47,5 @@ var getListeProfil = function(){
 
 exports.creerProfil = creerProfil;
 exports.getProfil = getProfil;
+exports.getProfilNom = getProfilNom;
 exports.getListeProfil = getListeProfil;

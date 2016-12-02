@@ -36,5 +36,7 @@ var reponse = require('./ressources/reponse');
 app.use('/reponse', reponse);
 var utilisateur = require('./ressources/profil');
 app.use('/profil', utilisateur);
+var listeUtilisateur = require('./ressources/profils');
+app.use('/profils', listeUtilisateur);
 
 module.exports = app;
