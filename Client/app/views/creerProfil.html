@@ -1,0 +1,19 @@
+<div>
+    <form name="creerProfilForm">
+        <div ng-controller="CreerProfilCtrl">
+        
+            <label>Nom d'utilisateur</label>
+            <input type="text" class="form-control" id="nomUtil" ng-model="data.nomUtil" /><br />
+        
+            <label>Nom</label>
+            <input type="text" class="form-control" id="nom" ng-model="data.nom" /><br />
+        
+            <label>Prénom</label>
+            <input type="text" class="form-control" id="prenom" ng-model="data.prenom" /><br />
+        
+            <button type="button" class="btn btn-success btn-block" ng-click="creerProfil(creerProfilForm)">Créer votre profil</button><br />
+        </div>
+        
+    </form>
+
+</div>

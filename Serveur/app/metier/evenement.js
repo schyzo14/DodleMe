@@ -17,7 +17,7 @@ var creerEvenement = function (nom, descriptif) {
     var id = lastIdEv+1;
     listeEvenement[id] = new Evenement(id, nom, descriptif);
     lastIdEv = lastIdEv+1;
-    return id;
+    return listeEvenement[id];
 }
 
 // recupérer événement
