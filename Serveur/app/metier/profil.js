@@ -1,5 +1,7 @@
 var listeProfil = {};
-var lastIdProfil = 1;
+var lastIdProfil = 2;
+var unProfil = new Profil(1, "nom", "prenom", "nomUtilTest");
+listeProfil[1] = unProfil;
 
 function Profil(id, nom, prenom, nomUtil){
     this.id = id;

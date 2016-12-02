@@ -8,14 +8,12 @@
  * Controller of the clientApp
  */
 angular.module('clientApp')
-.controller('SeConnecterCtrl', ['$location', '$scope', 'profilfactory', function ($location, $scope, profilfactory) {
+    .controller('SeConnecterCtrl', ['$location', '$scope', 'ProfilFactory', function ($location, $scope, ProfilFactory) {
       
     $scope.data = {};
       
     $scope.seConnecterF = function (form) {
         var nomUtil = $scope.data.nomUtil;
-        
         alert(nomUtil);
-    
     }
-}
+}]);
