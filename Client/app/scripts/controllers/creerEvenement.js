@@ -8,7 +8,6 @@
  * Controller of the clientApp
  */
 angular.module('clientApp')
-
   .controller('CreerEvenementCtrl', ['$location', '$scope', 'eventFactory', '$http', function ($location, $scope, eventFactory, $http) {
     
     /** Calendrier **/
@@ -85,20 +84,8 @@ angular.module('clientApp')
                 if (taille === 0) {
                     alert ("Merci de mettre au moins un créneau !");
                 } else {
-                
-                    /* Créer l'évènement */
-                    $http({
-                         method: 'POST',
-                         url: 'http://localhost:8080/evenement/',
-                         headers: {
-                           'Content-Type': 'application/json'
-                         },
-                         data: { 
-                               nom: $scope.data.nom,
-                               descriptif: $scope.data.descriptif}
-                        }).
-                        success(function(data, status){
-                            alert("L'évènement a été créé !");
+                    var evCree = function(data){
+                        alert("L'évènement a été créé !");
 
                             var idE = data;
 
@@ -174,11 +161,18 @@ angular.module('clientApp')
                             }
                             /** redirection page de détail **/
                             $location.path('/detailEvenements/'+idE);
-
-                        }).
-                        error(function(data, status){
-                            alert("Echec lors de la création de l'évènement !");
-                        });
+                    }
+                
+                    var event = new eventFactory({
+                        nom : $scope.data.nom,
+                        descriptif: $scope.data.descriptif
+                    });
+                    event.$save(function success(data){
+                        evCree(data.id);
+                    }, function error(){
+                        alert("Echec lors de la création de l'évènement !");
+                    })
+                    
                 }
             }
             

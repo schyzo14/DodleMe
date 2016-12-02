@@ -45,6 +45,11 @@ angular
         controller: 'CreerProfilCtrl',
         controllerAs: 'creerProfil'
       })
+      .when('/seConnecter', {
+        templateUrl: 'views/seConnecter.html',
+        controller: 'SeConnecterCtrl',
+        controllerAs: 'seConnecter'
+      })
       .otherwise({
         redirectTo: '/'
       });
