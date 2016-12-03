@@ -3,9 +3,24 @@
   <label>Description :</label> {{evenement.descriptif}}
   <hr />
   <h3>Ajouter un nouveau créneau</h3>
-  <label>Date : </label> <input type="date" />
-  <label>Heure : </label> <input type="text" />
-  <button type="button" class="btn btn-success" ng-click="">+</button>
+  <label>Date :</label> <input type="text" ng-model="myDate" placeholder="jj-mm-aa"/>
+  <label>Heure :</label>
+  <select ng-model="myCreneau">
+    <option>Pas de créneau choisi</option>
+    <option>00:00</option><option>00:30</option><option>01:00</option><option>01:30</option>
+    <option>02:00</option><option>02:30</option><option>03:00</option><option>03:30</option>
+    <option>04:00</option><option>04:30</option><option>05:00</option><option>05:30</option>
+    <option>06:00</option><option>06:30</option><option>07:00</option><option>07:30</option>
+    <option>08:00</option><option>08:30</option><option>09:00</option><option>09:30</option>
+    <option>10:00</option><option>10:30</option><option>11:00</option><option>11:30</option>
+    <option>12:00</option><option>12:30</option><option>13:00</option><option>13:30</option>
+    <option>14:00</option><option>14:30</option><option>15:00</option><option>15:30</option>
+    <option>16:00</option><option>16:30</option><option>17:00</option><option>17:30</option>
+    <option>18:00</option><option>18:30</option><option>19:00</option><option>19:30</option>
+    <option>20:00</option><option>20:30</option><option>21:00</option><option>21:30</option>
+    <option>22:00</option><option>22:30</option><option>23:00</option><option>23:30</option>
+  </select>
+  <button type="button" class="btn btn-success" ng-click="ajouterCreneau()">+</button>
   <hr />
   <table class="table table-hover table-bordered">
     <tr>
@@ -16,22 +31,22 @@
     </tr>
     <tr>
       <th>Heure</th>
-      <th ng-repeat="creneau in creneaux">
+      <th ng-repeat="creneau in evenement.listeCreneau">
         {{creneau.heure}}
       </th>
     </tr>
-    <tr ng-repeat="reponse in reponses" class="text-center">
+    <tr ng-repeat="reponse in evenement.listeReponses" class="text-center">
       <td></td>
-      <td ng-repeat="creneau in creneaux">
+      <td ng-repeat="creneau in evenement.listeCreneau">
         <input type="checkbox" class="form-check-input" ng-checked="checkCreneau(reponse, creneau)" disabled="disabled"/>
       </td>
     </tr>
     <tr>
       <td></td>
-      <td ng-repeat="creneau in creneaux" class="text-center">
-        <input type="checkbox" class="form-check-input" />
+      <td ng-repeat="creneau in evenement.listeCreneau" class="text-center">
+        <input type="checkbox" class="form-check-input" ng-model="etat" ng-change="changeReponse(this, etat)"/>
       </td>
     </tr>
   </table>
-  <button type="button" class="btn btn-success pull-right">Valider la réponse</button>
+  <button type="button" class="btn btn-success pull-right" ng-click="validerReponse()">Valider la réponse</button>
 </div>
