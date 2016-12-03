@@ -8,23 +8,27 @@
  * Controller of the clientApp
  */
 angular.module('clientApp')
-  .controller('DetailEvenementsCtrl', ['$location', '$routeParams', '$scope', 'ReponsesFactory', 'eventFactory',
-    function ($location, $routeParams, $scope, ReponsesFactory, eventFactory) {
+  .controller('DetailEvenementsCtrl', ['$location', '$routeParams', '$scope', 'ReponsesFactory', 'eventFactory', 'creneauFactory',
+    function ($location, $routeParams, $scope, ReponsesFactory, eventFactory, creneauFactory) {
 
+      //Remplissage du tableau
       var idEvent = $routeParams.idEvent;
-      var c = {};
+      var sizeRep = 0;
       eventFactory.get({'idEvent' : idEvent}).$promise.then(function(data) {
-        c = data.listeCreneau;
         $scope.evenement = data;
-        $scope.creneaux = data.listeCreneau;
+        $scope.evenement.listeCreneau = data.listeCreneau;
         $scope.creneauxSpan = creneauxDate();
-        $scope.reponses = data.listeReponses;
+        $scope.evenement.listeReponses = data.listeReponses;
+        //$scope.evenement.listeReponses[sizeRep+1].listeCreneaux = [];
+        sizeRep = Object.keys($scope.evenement.listeReponses).length;
+
         console.log(data);
       });
 
+      //Mise en place du colspan
       var creneauxDate = function() {
         var output = new Array();
-        angular.forEach(c, function(col) {
+        angular.forEach($scope.evenement.listeCreneau, function(col) {
           if (output.length == 0 || output[output.length-1].date.localeCompare(col.date) != 0) {
             output.push({
               date:col.date,
@@ -37,6 +41,7 @@ angular.module('clientApp')
         return output;
       };
 
+      //Mise en place des cases à cocher précochées
       $scope.checkCreneau = function(reponse, creneau) {
         var retour = false;
         angular.forEach(reponse.listeCreneaux, function(cr) {
@@ -44,11 +49,45 @@ angular.module('clientApp')
             retour = true;
             return;
           }
-        })
+        });
         return retour;
       };
 
-      var validerReponse = function() {
+      $scope.ajouterCreneau = function() {
+        var size = Object.keys($scope.evenement.listeCreneau).length;
+        $scope.evenement.listeCreneau[size+1] = {
+          idCreneau : size+1,
+          date : $scope.myDate,
+          heure : $scope.myCreneau,
+          idEvenement : $scope.evenement.id
+        };
+        $scope.creneauxSpan = creneauxDate();
+      };
 
-      }
+      $scope.validerReponse = function() {
+        //Ajout des réponses à l'événement
+        $scope.evenement.listeReponses[sizeRep+1] = {
+          id : sizeRep+1,
+          listeCreneaux : listeCreneauxReponse,
+          idEvenement : $scope.evenement.id
+        };
+
+        console.log($scope.evenement);
+        //Enregistrement de l'événement
+        $scope.evenement.$update(function() {
+          $location.path('/');
+        });
+      };
+
+      var listeCreneauxReponse = [];
+      var i = 0;
+      $scope.changeReponse = function(rep, etat) {
+        if(etat == true) {
+          listeCreneauxReponse[i] = rep.creneau;
+          i++;
+        } else {
+          listeCreneauxReponse.splice(i);
+          i--;
+        }
+      };
   }]);

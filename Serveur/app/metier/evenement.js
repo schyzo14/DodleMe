@@ -35,6 +35,20 @@ var getListe = function (){
     return listeEvenement;
 };
 
+//Nouvelle liste de créneaux
+var setListeCreneaux = function(id, listeC) {
+    listeEvenement[id].listeCreneau = listeC;
+    return 0;
+};
+
+//Nouvelle liste de réponses
+var setListeReponses = function(id, listeR) {
+    listeEvenement[id].listeReponses = listeR;
+    return 0;
+}
+
 exports.creerEvenement = creerEvenement;
 exports.getEvenement = getEvenement;
 exports.getListe = getListe;
+exports.setListeCreneaux = setListeCreneaux;
+exports.setListeReponses = setListeReponses;
