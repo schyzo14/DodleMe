@@ -53,9 +53,23 @@ angular
       .when('/profilUtilisateur', {
         templateUrl: 'views/profilUtilisateur.html',
         controller: 'profilUtilisateurCtrl',
-        controllerAs: 'profilUtilisateur'
+        controllerAs: 'profilUtilisateur',
+        access: {
+          isFreeAccess: false
+        }
       })
       .otherwise({
         redirectTo: '/'
-      });
+      })
+  })
+  .run(function ($rootScope, $location, ConnexionFactory) {
+    $rootScope.$on('$routeChangeStart', function (currRoute, prevRoute) {
+      if (prevRoute.access != undefined) {
+        // if route requires auth and user is not logged in
+        if (!prevRoute.access.isFreeAccess && !ConnexionFactory.isLogged) {
+          // redirects to index
+          $location.path('/');
+        }
+      }
+    })
   });
