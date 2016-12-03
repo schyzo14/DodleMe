@@ -3,9 +3,10 @@
   <label>Description :</label> {{evenement.descriptif}}
   <hr />
   <h3>Ajouter un nouveau créneau</h3>
-  <label>Date :</label> <input type="text" ng-model="myDate" placeholder="jj-mm-aa"/>
-  <label>Heure :</label>
-  <select ng-model="myCreneau">
+  <label for="myDate">Date :</label>
+  <input type="text" ng-model="myDate" id="myDate" placeholder="jj-mm-aa"/>
+  <label for="myCreneau">Heure :</label>
+  <select id="myCreneau" ng-model="myCreneau">
     <option>Pas de créneau choisi</option>
     <option>00:00</option><option>00:30</option><option>01:00</option><option>01:30</option>
     <option>02:00</option><option>02:30</option><option>03:00</option><option>03:30</option>
@@ -22,31 +23,28 @@
   </select>
   <button type="button" class="btn btn-success" ng-click="ajouterCreneau()">+</button>
   <hr />
-  <table class="table table-hover table-bordered">
+  <table class="table table-hover table-bordered ">
     <tr>
       <th>Date</th>
-      <th ng-repeat="cdate in creneauxSpan" colspan="{{cdate.span}}">
-        {{cdate.date}}
-      </th>
+      <th ng-repeat="cdate in creneauxSpan" colspan="{{cdate.span}}">{{cdate.date}}</th>
     </tr>
     <tr>
       <th>Heure</th>
-      <th ng-repeat="creneau in evenement.listeCreneau">
-        {{creneau.heure}}
-      </th>
+      <th ng-repeat="creneau in evenement.listeCreneau">{{creneau.heure}}</th>
     </tr>
     <tr ng-repeat="reponse in evenement.listeReponses" class="text-center">
-      <td></td>
+      <td>{{reponse.nomUser}}</td>
       <td ng-repeat="creneau in evenement.listeCreneau">
-        <input type="checkbox" class="form-check-input" ng-checked="checkCreneau(reponse, creneau)" disabled="disabled"/>
+          <input type="checkbox" ng-checked="checkCreneau(reponse, creneau)" disabled="disabled"/>
       </td>
     </tr>
     <tr>
-      <td></td>
+      <td><input type="text" class="form-control" ng-model="newUser" /></td>
       <td ng-repeat="creneau in evenement.listeCreneau" class="text-center">
-        <input type="checkbox" class="form-check-input" ng-model="etat" ng-change="changeReponse(this, etat)"/>
+          <input type="checkbox" ng-model="etat" ng-change="changeReponse(this, etat)"/>
       </td>
     </tr>
   </table>
   <button type="button" class="btn btn-success pull-right" ng-click="validerReponse()">Valider la réponse</button>
+  <br /><br />
 </div>

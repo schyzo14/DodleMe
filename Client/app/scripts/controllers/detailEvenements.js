@@ -19,10 +19,7 @@ angular.module('clientApp')
         $scope.evenement.listeCreneau = data.listeCreneau;
         $scope.creneauxSpan = creneauxDate();
         $scope.evenement.listeReponses = data.listeReponses;
-        //$scope.evenement.listeReponses[sizeRep+1].listeCreneaux = [];
         sizeRep = Object.keys($scope.evenement.listeReponses).length;
-
-        console.log(data);
       });
 
       //Mise en place du colspan
@@ -68,6 +65,7 @@ angular.module('clientApp')
         //Ajout des réponses à l'événement
         $scope.evenement.listeReponses[sizeRep+1] = {
           id : sizeRep+1,
+          nomUser : $scope.newUser,
           listeCreneaux : listeCreneauxReponse,
           idEvenement : $scope.evenement.id
         };
