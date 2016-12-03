@@ -13,10 +13,7 @@ router.post(
 //GET
 router.get(
 	'/:nomUtil', function(req, res) {
-        //res.json(profil.getProfilNom(req.params.nomUtil));
-		console.log(req.params.nomUtil);
-        console.log(profil.getProfilNom(req.params.nomUtil));
-		if(profil.getProfilNom(req.params.nomUtil).nomUtil === null) {
+		if(profil.getProfilNom(req.params.nomUtil) === undefined) {
 		//Envoi avec code http personnalisé
             console.log("Aucun profil existe");
 			res.status(404).json(

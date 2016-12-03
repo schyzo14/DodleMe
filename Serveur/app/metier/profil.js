@@ -29,21 +29,17 @@ var getProfil = function(id){
 
 //Récupérer un profil à partir de son nom
 var getProfilNom = function(nom){
-    var pas;
-    console.log(nom);
+    var pas=0;
     var sizeRep = Object.keys(listeProfil).length;
-    console.log(sizeRep);
-    for(pas=0;pas<sizeRep;pas++)
-    {        
-        console.log("boucle for");
-        console.log(listeProfil[pas].nom);
-
-        if(typeof listeProfil[pas].nom === 'undefined'){
-            return {};
-        }else{
-            return listeProfil[pas];
+    
+    while(pas<sizeRep && typeof listeProfil[pas].nomUtil != nom)
+        {
+            if(listeProfil[pas].nomUtil === nom){
+                return listeProfil[pas].nomUtil;
+                pas=sizeRep;
+            }
+            pas++;
         }
-    } 
 }
 
 //Liste des profils
