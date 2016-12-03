@@ -18,16 +18,11 @@ angular.module('clientApp')
         var nomUtil = $scope.data.nomUtil;
         alert(nomUtil);
         
-        var profil1 = new ProfilFactory({
-            id: idP,
-            heure: creneau1,
-            date: date
-        });
         
-        /*ProfilFactory.get({ nomUtil:nomUtil }).$promise.then(function(data) {
-			//$scope.idCompteRes = data.somme;
-		});*/
-        
+        //ProfilFactory.get({ nomUtil:nomUtil })
+        // Get Booking ID 1
+        var pro = ProfilFactory.get({},{'nomUtil': nomUtil});
+        alert(pro);
         
     }
 }]);
