@@ -19,10 +19,11 @@ angular.module('clientApp')
         alert(nomUtil);
         
         
-        //ProfilFactory.get({ nomUtil:nomUtil })
-        // Get Booking ID 1
-        var pro = ProfilFactory.get({},{'nomUtil': nomUtil});
-        alert(pro);
+        //GEt
+        ProfilFactory.get({'nomUtil' : nomUtil}).$promise.then(function(data) {
+        $scope.nomUtil = data;
+        console.log(data);
+      });
         
     }
 }]);

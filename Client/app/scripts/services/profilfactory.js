@@ -9,8 +9,7 @@
  */
 angular.module('clientApp')
   .factory('ProfilFactory', function ($resource) {
-    
-	return $resource('http://localhost:8080/profil/', {
+	return $resource('http://localhost:8080/profil/:nomUtil', {
         
     })
   });
