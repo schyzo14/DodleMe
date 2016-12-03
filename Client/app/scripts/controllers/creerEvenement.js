@@ -8,7 +8,7 @@
  * Controller of the clientApp
  */
 angular.module('clientApp')
-  .controller('CreerEvenementCtrl', ['$location', '$scope', 'eventFactory', 'creneauFactory', function ($location, $scope, eventFactory, creneauFactory) {
+  .controller('CreerEvenementCtrl', ['$location', '$scope', 'eventFactory', 'creneauFactory', '$timeout', function ($location, $scope, eventFactory, creneauFactory, $timeout) {
     
     /** Calendrier : Date du jour **/
     $scope.today = function() {
@@ -104,6 +104,7 @@ angular.module('clientApp')
                             var creneau1 = arrayColonnes[1].children[0].options[arrayColonnes[1].children[0].selectedIndex].value;
                             var creneau2 = arrayColonnes[2].children[0].options[arrayColonnes[2].children[0].selectedIndex].value;
                             var creneau3 = arrayColonnes[3].children[0].options[arrayColonnes[3].children[0].selectedIndex].value;
+                            
                             if (creneau1 !== "Pas de créneau choisi") {
                                 /** ajouter creneau 1 **/
                                 /** on fait une factory avec les paramètres **/
@@ -150,7 +151,10 @@ angular.module('clientApp')
                         }
                         
                         /** redirection page de détail **/
-                        $location.path('/detailEvenements/'+idE);
+                        $timeout(function() {
+                            $location.path('/detailEvenements/'+idE);
+                        }, 1000);
+                        
                     }
                 }
             }

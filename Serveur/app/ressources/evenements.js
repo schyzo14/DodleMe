@@ -10,4 +10,12 @@ router.get(
 	}
 );
 
+//GET
+router.get(
+	'/crees/:nomUtil', function(req, res) {
+		
+		res.json(evenement.getListeCrees(req.params.nomUtil));
+	}
+);
+
 module.exports = router;
