@@ -1,4 +1,5 @@
 var listeEvenement = {};
+
 var element1 = new Evenement(1, "unElement", "descriptif");
 listeEvenement[1] = element1;
 var lastIdEv = 1;
@@ -27,12 +28,12 @@ var getEvenement = function (id) {
 		return 0;
     }
     return listeEvenement[id];
-}
+};
 
 //Liste des evenements
 var getListe = function (){
     return listeEvenement;
-}
+};
 
 exports.creerEvenement = creerEvenement;
 exports.getEvenement = getEvenement;

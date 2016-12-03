@@ -35,7 +35,7 @@ angular
         controller: 'CreerEvenementCtrl',
         controllerAs: 'creerEvenement'
       })
-      .when('/detailEvenements', {
+      .when('/detailEvenements/:idEvent', {
         templateUrl: 'views/detailEvenements.html',
         controller: 'DetailEvenementsCtrl',
         controllerAs: 'detailEvenements'
