@@ -1,14 +1,14 @@
 var listeProfil = {};
 var lastIdProfil = 1;
 var unProfil = new Profil(0, "nom", "prenom", "nomUtilTest");
-listeProfil[1] = unProfil;
+listeProfil[0] = unProfil;
 
 function Profil(id, nom, prenom, nomUtil){
     this.id = id;
     this.nom = nom;
     this.prenom = prenom;
     this.nomUtil = nomUtil;
-    this.listeProfil = {};
+    //this.listeProfil = {};
 }
 
 //Creer un nouveau profil
@@ -30,12 +30,18 @@ var getProfil = function(id){
 //Récupérer un profil à partir de son nom
 var getProfilNom = function(nom){
     var pas;
-    for(pas=0;listeProfil.length;pas++)
-    {
+    console.log(nom);
+    var sizeRep = Object.keys(listeProfil).length;
+    console.log(sizeRep);
+    for(pas=0;pas<sizeRep;pas++)
+    {        
+        console.log("boucle for");
+        console.log(listeProfil[pas].nom);
+
         if(typeof listeProfil[pas].nom === 'undefined'){
             return {};
         }else{
-            return listeProfil[id];
+            return listeProfil[pas];
         }
     } 
 }

@@ -27,8 +27,10 @@ angular.module('clientApp')
             prenom : prenom
         });
         profil.$save(function success(data){
-            //evCree(data.id);
             alert("Profil créé");
+            /** redirection page du profil **/
+            $location.path('/profilUtilisateur/');
+                   
         }, function error(){
             alert("Echec lors de la création du profil !");
         })
