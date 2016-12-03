@@ -1,7 +1,37 @@
-<label>Nom de l'événement : </label>{{reponse.evenement.nom}}
-<table class="table table-hover">
-<!--  <tr ng-repeat="reponse in reponses">
-    <td>{{reponse.creneaux.date}}</td>
-    <td>{{creneau.heure}}</td>
-  </tr>-->
-</table>
+<div>
+  <label>Nom de l'événement : </label> {{evenement.nom}}<br />
+  <label>Description :</label> {{evenement.descriptif}}
+  <hr />
+  <h3>Ajouter un nouveau créneau</h3>
+  <label>Date : </label> <input type="date" />
+  <label>Heure : </label> <input type="text" />
+  <button type="button" class="btn btn-success" ng-click="">+</button>
+  <hr />
+  <table class="table table-hover table-bordered">
+    <tr>
+      <th>Date</th>
+      <th ng-repeat="cdate in creneauxSpan" colspan="{{cdate.span}}">
+        {{cdate.date}}
+      </th>
+    </tr>
+    <tr>
+      <th>Heure</th>
+      <th ng-repeat="creneau in creneaux">
+        {{creneau.heure}}
+      </th>
+    </tr>
+    <tr ng-repeat="reponse in reponses" class="text-center">
+      <td></td>
+      <td ng-repeat="creneau in creneaux">
+        <input type="checkbox" class="form-check-input" ng-checked="checkCreneau(reponse, creneau)" disabled="disabled"/>
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td ng-repeat="creneau in creneaux" class="text-center">
+        <input type="checkbox" class="form-check-input" />
+      </td>
+    </tr>
+  </table>
+  <button type="button" class="btn btn-success pull-right">Valider la réponse</button>
+</div>

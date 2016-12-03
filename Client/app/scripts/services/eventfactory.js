@@ -9,8 +9,8 @@
  */
 angular.module('clientApp')
   .factory('eventFactory', function ($resource) {
-    return $resource('http://localhost:8080/evenement/', {
-        
+    return $resource('http://localhost:8080/evenement/:idEvent', {
+
     })
   })
 

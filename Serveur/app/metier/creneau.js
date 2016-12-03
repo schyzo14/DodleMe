@@ -1,4 +1,4 @@
-var listeEvenement = require('../metier/evenement.js');
+var listeEvenement = require('./evenement.js');
 
 var lastId = 0;
 
@@ -26,6 +26,12 @@ var ajouterCreneau = function(heure, date, idE) {
     listeEvenement.getEvenement(idE).listeCreneau = listeCreneau;
     return 1;
 };
+
+ajouterCreneau("11:00", "27-12-10", 1);
+ajouterCreneau("12:00", "27-12-10", 1);
+ajouterCreneau("13:00", "27-12-10", 1);
+ajouterCreneau("10:00", "28-12-10", 1);
+ajouterCreneau("11:00", "28-12-10", 1);
 
 // fonctions exportés
 exports.ajouterCreneau = ajouterCreneau;
