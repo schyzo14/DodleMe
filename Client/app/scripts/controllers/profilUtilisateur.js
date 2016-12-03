@@ -8,14 +8,18 @@
  * Controller of the clientApp
  */
 angular.module('clientApp')
-  .controller('profilUtilisateurCtrl', ['$scope', '$rootScope', function ($scope, $rootScope) {
+  .controller('profilUtilisateurCtrl', ['$scope', '$routeParams', function ($scope, $routeParams) {
 
-    $rootScope.$on('$beforeRouteChange', function(scope, newRoute){
-        if (!newRoute) return;
-        //Load any required resources here
-        console.log("Do conditional loading here");
-        //Set the state bound do the ng-include src attribute
-        $rootScope.templates = newRoute.$route.templates;        
-    });
+      $scope.data = {};
+      
+      /** Profil connecté **/
+      $scope.data.idP = $routeParams.id;
+      
+      
+      /** Les événements créés par le profil **/
+      $scope.data.nbEvCrees = 9;
+      
+      /** Les événements auxquels participent le profil **/
+      $scope.data.nbEvParticipes = 10;
  
   }]);

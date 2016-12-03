@@ -79,7 +79,8 @@ angular.module('clientApp')
                     /** on fait une factory avec les paramètres **/
                     var event = new eventFactory({
                         nom : $scope.data.nom,
-                        descriptif: $scope.data.descriptif
+                        descriptif: $scope.data.descriptif,
+                        nomUtil: $scope.data.nomUtil
                     });
                     /** on fait un post pour créer l'évènement **/
                     event.$save(function success(data){

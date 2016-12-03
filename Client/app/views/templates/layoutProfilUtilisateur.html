@@ -1,26 +1,27 @@
-    <div class="header">
-      <div class="navbar navbar-default" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
+<div class="header">
+  <div class="navbar navbar-default" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
 
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
 
-            <a class="navbar-brand" href="#/">DodleMe</a>
-          </div>
+        <a class="navbar-brand" href="#/">DodleMe</a>
+      </div>
 
-          <div class="collapse navbar-collapse" id="js-navbar-collapse">
-            
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#/">Liste des événements</a></li>
-                <li><a href="#/">Evénements créés</a></li>
-                <li><a href="#/">Evénement participés</a></li>
-            </ul>
-          </div>
-        </div>
+      <div class="collapse navbar-collapse" id="js-navbar-collapse">
+
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#/">Liste des événements</a></li>
+            <li><a href="#/">Evénements créés <span class="label label-danger">{{data.nbEvCrees}}</span></a></li>
+            <li><a href="#/">Evénement participés <span class="label label-danger">{{data.nbEvParticipes}}  </span></a></li>
+             <li><a href="#/">Connecté avec le profil : {{data.idP}}</a></li>
+        </ul>
       </div>
     </div>
+  </div>
+</div>

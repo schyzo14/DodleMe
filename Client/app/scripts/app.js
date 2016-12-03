@@ -50,13 +50,18 @@ angular
         controller: 'SeConnecterCtrl',
         controllerAs: 'seConnecter'
       })
-      .when('/profilUtilisateur', {
+      .when('/profilUtilisateur/:id', {
         templateUrl: 'views/profilUtilisateur.html',
         controller: 'profilUtilisateurCtrl',
         controllerAs: 'profilUtilisateur',
         access: {
           isFreeAccess: false
         }
+      })
+      .when('/layoutProfilUtilisateur/:id', {
+        templateUrl: 'views/templates/layoutProfilUtilisateur.html',
+        controller: 'profilUtilisateurCtrl',
+        controllerAs: 'profilUtilisateur'
       })
       .otherwise({
         redirectTo: '/'

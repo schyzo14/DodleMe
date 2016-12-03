@@ -1,23 +1,27 @@
+var listeProfil = require('./profil.js');
+
 var listeEvenement = {};
 
 var element1 = new Evenement(1, "unElement", "descriptif");
 listeEvenement[1] = element1;
 var lastIdEv = 1;
 
-function Evenement(id, nom, descriptif) {
+function Evenement(id, nom, descriptif, nomUtil) {
     this.id = id;
     this.nom = nom;
     this.descriptif = descriptif;
+    this.nomUtil = nomUtil;
     this.listeCreneau = {};
     this.listeReponses = {};
 }
 
 // créer un nouveau événement
-var creerEvenement = function (nom, descriptif) {
+var creerEvenement = function (nom, descriptif, nomUtil) {
 	// s'il n'existe pas
     var id = lastIdEv+1;
-    listeEvenement[id] = new Evenement(id, nom, descriptif);
+    listeEvenement[id] = new Evenement(id, nom, descriptif, nomUtil);
     lastIdEv = lastIdEv+1;
+    
     return listeEvenement[id];
 }
 

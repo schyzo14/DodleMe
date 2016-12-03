@@ -13,7 +13,7 @@ router.get(
 // POST
 router.post(
     '/', function(req, res) {
-        res.json(evenement.creerEvenement (req.body.nom, req.body.descriptif));
+        res.json(evenement.creerEvenement (req.body.nom, req.body.descriptif, req.body.nomUtil));
     }
 );
 
