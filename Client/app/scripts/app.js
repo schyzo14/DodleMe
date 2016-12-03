@@ -54,9 +54,9 @@ angular
         templateUrl: 'views/profilUtilisateur.html',
         controller: 'profilUtilisateurCtrl',
         controllerAs: 'profilUtilisateur',
-        access: {
+        /*access: {
           isFreeAccess: false
-        }
+        }*/
       })
       .when('/layoutProfilUtilisateur/:id', {
         templateUrl: 'views/templates/layoutProfilUtilisateur.html',
