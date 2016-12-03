@@ -50,6 +50,11 @@ angular
         controller: 'SeConnecterCtrl',
         controllerAs: 'seConnecter'
       })
+      .when('/profilUtilisateur', {
+        templateUrl: 'views/profilUtilisateur.html',
+        controller: 'profilUtilisateurCtrl',
+        controllerAs: 'profilUtilisateur'
+      })
       .otherwise({
         redirectTo: '/'
       });
