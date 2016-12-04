@@ -8,7 +8,14 @@
  * Controller of the clientApp
  */
 angular.module('clientApp')
-  .controller('evenementsCreesCtrl', ['$scope', 'EventsFactory', '$location', function ($scope, EventsFactory) {
+  .controller('evenementsCreesCtrl', ['$scope', 'EventsCreesFactory', '$location', function ($scope, EventsCreesFactory, $location) {
 
+      $scope.data = {};
+      $scope.data.nomUtil = "momo";
+
+      
+        EventsCreesFactory.get({'nomUtil' : $scope.data.nomUtil}).$promise.then(function(data) {
+            $scope.evenements = data;
+      });
 
   }]);
