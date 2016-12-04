@@ -52,18 +52,24 @@ var setListeReponses = function(id, listeR) {
 }
 
 // Liste des evenements créés par un nom d'utilisateur
-var getListeCrees = function(nomUtil) {
+var getListeCrees = function(id) {
     var listeEvenementCrees = {};    
     var pas=1;
     var sizeRep = Object.keys(listeEvenement).length;
     console.log("avant for");
+    // parcours des evenements
     while(pas<sizeRep+1) {
         console.log("dans for");
-        console.log(listeEvenement[pas].nomUtil + " --> " + nomUtil)
-        if(listeEvenement[pas].nomUtil === nomUtil){
-            listeEvenementCrees[listeEvenement[pas].id] = listeEvenement[pas];
-            console.log("dans if");
+        console.log(listeEvenement[pas].nomUtil + " --> " + id)
+        // comme le nom et l'id sont pareil !
+        // si c'est le même nom
+        if(listeEvenement[pas].nomUtil !== 'undefined') {
+            if(listeEvenement[pas].nomUtil === id){
+                listeEvenementCrees[listeEvenement[pas].id] = listeEvenement[pas];
+                console.log("dans if");
+            }
         }
+
         pas++;
     }
     

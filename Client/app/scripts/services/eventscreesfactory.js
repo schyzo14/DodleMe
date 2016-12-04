@@ -9,7 +9,7 @@
  */
 angular.module('clientApp')
   .factory('EventsCreesFactory', function ($resource) {
-	return $resource('http://localhost:8080/evenements/crees/:nomUtil', {
-         nomUtil: '@nomUtil' 
+	return $resource('http://localhost:8080/evenements/crees/:id', {
+         id: '@id' 
     });
   })
