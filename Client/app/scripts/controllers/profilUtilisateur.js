@@ -8,14 +8,14 @@
  * Controller of the clientApp
  */
 angular.module('clientApp')
-  .controller('profilUtilisateurCtrl', ['$scope', '$routeParams', 'ProfilFactory', function ($scope, $routeParams, ProfilFactory) {
+  .controller('profilUtilisateurCtrl', ['$scope', '$routeParams', 'ProfilFactory', 'EventsCreesFactory', function ($scope, $routeParams, ProfilFactory, EventsCreesFactory) {
 
       $scope.data = {};
       
       /** Profil connecté **/
       $scope.data.idP = $routeParams.id;
       var nomUtil = $routeParams.id;
-      
+      alert("idP : "+nomUtil);
       
       /** Récupération éléments profils**/
       //GEt
@@ -27,11 +27,4 @@ angular.module('clientApp')
             
       });
       
-      
-      /** Les événements créés par le profil **/
-      $scope.data.nbEvCrees = 9;
-      
-      /** Les événements auxquels participent le profil **/
-      $scope.data.nbEvParticipes = 10;
- 
   }]);

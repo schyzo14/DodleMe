@@ -58,11 +58,6 @@ angular
           isFreeAccess: false
         }*/
       })
-      .when('/layoutProfilUtilisateur/:id', {
-        templateUrl: 'views/templates/layoutProfilUtilisateur.html',
-        controller: 'profilUtilisateurCtrl',
-        controllerAs: 'profilUtilisateur'
-      })
       .when('/evenementsCrees/:id', {
         templateUrl: 'views/evenementsCrees.html',
         controller: 'evenementsCreesCtrl',
