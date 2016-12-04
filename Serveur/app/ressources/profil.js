@@ -15,14 +15,12 @@ router.get(
 	'/:nomUtil', function(req, res) {
 		if(profil.getProfil(req.params.nomUtil) === undefined) {
 		//Envoi avec code http personnalisé
-            console.log("Aucun profil existe");
 			res.status(404).json(
 				{
 					error: "Le profil "+req.params.nomUtil+" n'existe pas."
 				}
 			);
 		} else {
-            console.log("Profil existe");
 			res.json(profil.getProfil(req.params.nomUtil));
 		}
 	}
