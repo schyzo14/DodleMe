@@ -27,10 +27,17 @@ angular.module('clientApp')
         });
         profil.$save(function success(data){
             alert("Profil créé");
-            console.log(data);
+            
+            //GEt
+            ProfilFactory.get({'nomUtil' : nomUtil}).$promise.then(function(data) {
+                $scope.nomUtil = data.nomUtil;
+                var idP = data.id;
+            
             ConnexionFactory.setUser(data);
             /** redirection page du profil **/
-            $location.path('/profilUtilisateur/');
+            $location.path('/profilUtilisateur/'+idP);
+            
+            });
 
         }, function error(){
             alert("Echec lors de la création du profil !");
