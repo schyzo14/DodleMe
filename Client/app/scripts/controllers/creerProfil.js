@@ -28,16 +28,9 @@ angular.module('clientApp')
         profil.$save(function success(data){
             alert("Profil créé");
             
-            //GEt
-            ProfilFactory.get({'nomUtil' : nomUtil}).$promise.then(function(data) {
-                $scope.nomUtil = data.nomUtil;
-                var idP = data.id;
-            
             ConnexionFactory.setUser(data);
             /** redirection page du profil **/
-            $location.path('/profilUtilisateur/'+idP);
-            
-            });
+            $location.path('/profilUtilisateur/'+nomUtil);
 
         }, function error(){
             alert("Echec lors de la création du profil !");

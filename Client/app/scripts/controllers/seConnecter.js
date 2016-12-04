@@ -22,8 +22,6 @@ angular.module('clientApp')
             $scope.nomUtil = data.nomUtil;
             var idP = data.nomUtil;
             
-            alert("idP seCOnnecter : "+idP);
-            
             /** redirection page du profil **/
             $location.path('/profilUtilisateur/'+idP);
             
