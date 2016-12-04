@@ -20,8 +20,6 @@ angular.module('clientApp')
         var nom = $scope.data.nom;
         var prenom = $scope.data.prenom;
 
-        alert(nomUtil);
-
         var profil = new ProfilFactory({
             nomUtil : nomUtil,
             nom: nom,
@@ -29,6 +27,7 @@ angular.module('clientApp')
         });
         profil.$save(function success(data){
             alert("Profil créé");
+            console.log(data);
             ConnexionFactory.setUser(data);
             /** redirection page du profil **/
             $location.path('/profilUtilisateur/');

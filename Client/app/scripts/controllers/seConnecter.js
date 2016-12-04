@@ -19,10 +19,11 @@ angular.module('clientApp')
         
         //GEt
         ProfilFactory.get({'nomUtil' : nomUtil}).$promise.then(function(data) {
-            $scope.nomUtil = data;
+            $scope.nomUtil = data.nomUtil;
+            var idP = data;
             
             /** redirection page du profil **/
-            $location.path('/profilUtilisateur/');
+            $location.path('/profilUtilisateur/'+idP);
             
         }).catch(function() {
 	       alert("Le profil "+nomUtil+" n'existe pas.");

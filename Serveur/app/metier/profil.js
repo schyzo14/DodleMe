@@ -1,5 +1,5 @@
 var listeProfil = {};
-var lastIdProfil = 1;
+var lastIdProfil = 0;
 var unProfil = new Profil(0, "nom", "prenom", "nomUtilTest");
 listeProfil[0] = unProfil;
 
@@ -35,7 +35,7 @@ var getProfilNom = function(nom){
     while(pas<sizeRep && typeof listeProfil[pas].nomUtil != nom)
         {
             if(listeProfil[pas].nomUtil === nom){
-                return listeProfil[pas].nomUtil;
+                return listeProfil[pas];
                 pas=sizeRep;
             }
             pas++;
