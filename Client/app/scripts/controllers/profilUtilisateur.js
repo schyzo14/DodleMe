@@ -14,7 +14,10 @@ angular.module('clientApp')
       
       /** Profil connecté **/
       $scope.data.idP = $routeParams.id;
+      var nomUtil = $routeParams.id;
+      alert("idP : "+nomUtil);
       
+      /** Récupération éléments profils**/
       
       /** Les événements créés par le profil **/
       $scope.data.nbEvCrees = 9;

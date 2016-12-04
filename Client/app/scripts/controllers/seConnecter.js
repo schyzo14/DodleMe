@@ -20,7 +20,9 @@ angular.module('clientApp')
         //GEt
         ProfilFactory.get({'nomUtil' : nomUtil}).$promise.then(function(data) {
             $scope.nomUtil = data.nomUtil;
-            var idP = data.id;
+            var idP = data.nomUtil;
+            
+            alert("idP seCOnnecter : "+idP);
             
             /** redirection page du profil **/
             $location.path('/profilUtilisateur/'+idP);
