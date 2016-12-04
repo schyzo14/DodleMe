@@ -63,6 +63,11 @@ angular
         controller: 'evenementsCreesCtrl',
         controllerAs: 'evenementsCrees'
       })
+      .when('/evenementsRepondus/:idU', {
+        templateUrl: 'views/evenementsRepondus.html',
+        controller: 'EvenementsRepondusCtrl',
+        controllerAs: 'EvenementsRepondus'
+      })
       .otherwise({
         redirectTo: '/'
       })

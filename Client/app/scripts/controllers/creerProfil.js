@@ -28,15 +28,11 @@ angular.module('clientApp')
         profil.$save(function success(data){
             alert("Profil créé");
             
-            ConnexionFactory.setUser(data);
+            ConnexionFactory.setUser(nomUtil);
             /** redirection page du profil **/
             $location.path('/profilUtilisateur/'+nomUtil);
-
         }, function error(){
             alert("Echec lors de la création du profil !");
         })
-
     }
-
-
 }]);

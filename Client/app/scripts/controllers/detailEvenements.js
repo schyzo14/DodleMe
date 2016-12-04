@@ -65,7 +65,7 @@ angular.module('clientApp')
         //Ajout des réponses à l'événement
         $scope.evenement.listeReponses[sizeRep+1] = {
           id : sizeRep+1,
-          nomUser : $scope.newUser,
+          pseudo : $scope.newUser,
           listeCreneaux : listeCreneauxReponse,
           idEvenement : $scope.evenement.id
         };

@@ -9,7 +9,7 @@
  */
 angular.module('clientApp')
   .factory('ReponsesFactory', function ($resource) {
-    return $resource('http://localhost:8080/reponses/', {
+    return $resource('http://localhost:8080/reponse/:idU', { idU : '@id' }, {
         //
     })
   });

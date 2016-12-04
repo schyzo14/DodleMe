@@ -33,7 +33,7 @@
       <th ng-repeat="creneau in evenement.listeCreneau">{{creneau.heure}}</th>
     </tr>
     <tr ng-repeat="reponse in evenement.listeReponses" class="text-center">
-      <td>{{reponse.nomUser}}</td>
+      <td>{{reponse.pseudo}}</td>
       <td ng-repeat="creneau in evenement.listeCreneau">
           <input type="checkbox" ng-checked="checkCreneau(reponse, creneau)" disabled="disabled"/>
       </td>
