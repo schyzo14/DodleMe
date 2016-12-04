@@ -19,6 +19,7 @@ angular.module('clientApp')
       
       /** Récupération éléments profils**/
       
+      
       /** Les événements créés par le profil **/
       $scope.data.nbEvCrees = 9;
       
