@@ -8,7 +8,8 @@
  * Controller of the clientApp
  */
 angular.module('clientApp')
-  .controller('evenementsCreesCtrl', ['$scope', 'EventsCreesFactory', '$location', '$routeParams', function ($scope, EventsCreesFactory, $location, $routeParams) {
+  .controller('evenementsCreesCtrl', ['$scope', 'EventsCreesFactory', '$location', '$routeParams',
+    function ($scope, EventsCreesFactory, $location, $routeParams) {
 
       $scope.data = {};
       $scope.data.id = $routeParams.id;

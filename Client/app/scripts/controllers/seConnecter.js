@@ -8,8 +8,8 @@
  * Controller of the clientApp
  */
 angular.module('clientApp')
-    .controller('SeConnecterCtrl', ['$location', '$scope', 'ProfilFactory', 'ConnexionFactory',
-      function ($location, $scope, ProfilFactory, ConnexionFactory) {
+    .controller('SeConnecterCtrl', ['$location', '$scope', '$cookies', 'ProfilFactory',
+      function ($location, $scope, $cookies, ProfilFactory) {
 
 
     $scope.data = {};
@@ -23,12 +23,14 @@ angular.module('clientApp')
             $scope.nomUtil = data.nomUtil;
             var idP = data.nomUtil;
 
-            ConnexionFactory.setUser(idP);
+            //ConnexionFactory.setUser(idP);
+            $cookies.put('idP', idP);
 
             /** redirection page du profil **/
             $location.path('/profilUtilisateur/'+idP);
         }).catch(function() {
-	       alert("Le profil "+nomUtil+" n'existe pas.");
-	   });
+	        alert("Le profil "+nomUtil+" n'existe pas.");
+          $location.path('/');
+	      });
     }
 }]);

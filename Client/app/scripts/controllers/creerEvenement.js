@@ -8,7 +8,8 @@
  * Controller of the clientApp
  */
 angular.module('clientApp')
-  .controller('CreerEvenementCtrl', ['$location', '$scope', 'eventFactory', 'creneauFactory', '$timeout', function ($location, $scope, eventFactory, creneauFactory, $timeout) {
+  .controller('CreerEvenementCtrl', ['$location', '$scope', 'eventFactory', 'creneauFactory', '$timeout',
+    function ($location, $scope, eventFactory, creneauFactory, $timeout) {
     
     /** Calendrier : Date du jour **/
     $scope.today = function() {

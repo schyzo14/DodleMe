@@ -7,13 +7,13 @@ function Profil(nom, prenom, nomUtil){
     this.nom = nom;
     this.prenom = prenom;
     this.nomUtil = nomUtil;
-}
+};
 
 //Creer un nouveau profil
 var creerProfil = function (nom, prenom, nomUtil){
     listeProfil[nomUtil] = new Profil(nom, prenom, nomUtil);
     return nomUtil;
-}
+};
 
 //Récupérer un profil
 var getProfil = function(id){
@@ -21,12 +21,12 @@ var getProfil = function(id){
         return {};
     }
     return listeProfil[id];
-}
+};
 
 //Liste des profils
 var getListeProfil = function(){
     return listeProfil;
-}
+};
 
 exports.creerProfil = creerProfil;
 exports.getProfil = getProfil;

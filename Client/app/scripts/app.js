@@ -16,7 +16,8 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'ngCookies'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -54,9 +55,9 @@ angular
         templateUrl: 'views/profilUtilisateur.html',
         controller: 'profilUtilisateurCtrl',
         controllerAs: 'profilUtilisateur',
-        /*access: {
-          isFreeAccess: false
-        }*/
+        access: {
+          isFreeAccess : false
+        }
       })
       .when('/evenementsCrees/:id', {
         templateUrl: 'views/evenementsCrees.html',
@@ -68,15 +69,20 @@ angular
         controller: 'EvenementsRepondusCtrl',
         controllerAs: 'EvenementsRepondus'
       })
+      .when('/seDeconnecter', {
+        templateUrl: 'views/seDeconnecter.html',
+        controller: 'SeDeconnecterCtrl',
+        controllerAs: 'SeDeconnecter'
+      })
       .otherwise({
         redirectTo: '/'
       })
   })
-  .run(function ($rootScope, $location, ConnexionFactory) {
+  .run(function ($rootScope, $location, $cookies) {
     $rootScope.$on('$routeChangeStart', function (currRoute, prevRoute) {
       if (prevRoute.access != undefined) {
         // if route requires auth and user is not logged in
-        if (!prevRoute.access.isFreeAccess && !ConnexionFactory.isLogged) {
+        if (!prevRoute.access.isFreeAccess && ($cookies.get('idP') == null)) {
           // redirects to index
           $location.path('/');
         }

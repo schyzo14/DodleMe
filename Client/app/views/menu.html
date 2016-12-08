@@ -1,7 +1,9 @@
 <div ng-controller="MenuCtrl" class="collapse navbar-collapse" id="js-navbar-collapse">
   <ul class="nav navbar-nav navbar-right">
     <li ng-repeat="item in items">
-      <a ng-if="condition(item)" href="#/{{item.lien}}">{{item.name}}</a>
+      <a ng-if="condition(item)" ng-href="#/{{item.lien}}">
+        <span class="{{item.span}}"/> {{item.name}}
+      </a>
     </li>
   </ul>
 </div>

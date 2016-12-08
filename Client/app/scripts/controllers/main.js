@@ -10,8 +10,6 @@
 angular.module('clientApp')
   .controller('MainCtrl', ['$scope', 'EventsFactory', '$location', function ($scope, EventsFactory) {
 
-    $('#main').addClass('active');
-	
 	EventsFactory.get().$promise.then(function(data) {
 		$scope.evenements = data;
 	});

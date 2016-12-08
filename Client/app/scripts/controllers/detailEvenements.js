@@ -8,8 +8,8 @@
  * Controller of the clientApp
  */
 angular.module('clientApp')
-  .controller('DetailEvenementsCtrl', ['$location', '$routeParams', '$scope', 'ReponsesFactory', 'eventFactory', 'creneauFactory',
-    function ($location, $routeParams, $scope, ReponsesFactory, eventFactory, creneauFactory) {
+  .controller('DetailEvenementsCtrl', ['$location', '$routeParams', '$scope', 'ReponsesFactory', 'eventFactory',
+    function ($location, $routeParams, $scope, ReponsesFactory, eventFactory) {
 
       //Remplissage du tableau
       var idEvent = $routeParams.idEvent;

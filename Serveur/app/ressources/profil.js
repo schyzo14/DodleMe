@@ -13,7 +13,7 @@ router.post(
 //GET
 router.get(
 	'/:nomUtil', function(req, res) {
-		if(profil.getProfil(req.params.nomUtil) === undefined) {
+		if(profil.getProfil(req.params.nomUtil).id == null) {
 		//Envoi avec code http personnalisé
 			res.status(404).json(
 				{
