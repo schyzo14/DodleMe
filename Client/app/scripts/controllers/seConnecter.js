@@ -23,9 +23,8 @@ angular.module('clientApp')
             $scope.nomUtil = data.nomUtil;
             var idP = data.nomUtil;
 
-            //ConnexionFactory.setUser(idP);
             $cookies.put('idP', idP);
-
+			
             /** redirection page du profil **/
             $location.path('/profilUtilisateur/'+idP);
         }).catch(function() {

@@ -9,7 +9,6 @@
  */
 angular.module('clientApp')
   .controller('MenuCtrl', ['$scope', '$cookies', function ($scope, $cookies) {
-    //$scope.user = ConnexionFactory.getUser();
     var lienReponses = "evenementsRepondus/"+$cookies.get('idP');
     var lienEvents = "evenementsCrees/"+$cookies.get('idP');
     var lienProfil = "profilUtilisateur/"+$cookies.get('idP');

@@ -10,7 +10,6 @@
 angular.module('clientApp')
   .controller('profilUtilisateurCtrl', ['$scope', '$routeParams', 'ProfilFactory',
     function ($scope, $routeParams, ProfilFactory) {
-
       $scope.data = {};
 
       /** Profil connecté **/
