@@ -15,9 +15,9 @@ angular.module('clientApp')
     $scope.items = [
       {"name":"Inscription", "lien":"creerProfil", "span":"glyphicon glyphicon-user", "needAuthentication":false},
       {"name":"Connexion", "lien":"seConnecter", "span":"glyphicon glyphicon-log-in", "needAuthentication":false},
-      {"name":"Créer un événement", "lien":"creerEvenement", "span":"glyphicon glyphicon-user", "needAuthentication":true},
-      {"name":"Mes réponses", "lien":lienReponses, "span":"glyphicon glyphicon-user", "needAuthentication":true},
-      {"name":"Mes événements", "lien":lienEvents, "span":"glyphicon glyphicon-user", "needAuthentication":true},
+      {"name":"Créer un événement", "lien":"creerEvenement", "span":"glyphicon glyphicon-plus", "needAuthentication":true},
+      {"name":"Mes réponses", "lien":lienReponses, "span":"glyphicon glyphicon-check", "needAuthentication":true},
+      {"name":"Mes événements", "lien":lienEvents, "span":" 	glyphicon glyphicon-calendar", "needAuthentication":true},
       {"name":"Profil", "lien":lienProfil, "span":"glyphicon glyphicon-user", "needAuthentication":true},
       {"name":"Deconnexion", "lien":"seDeconnecter", "span":"glyphicon glyphicon-log-in", "needAuthentication":true}
     ];
