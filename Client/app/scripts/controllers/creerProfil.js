@@ -25,15 +25,18 @@ angular.module('clientApp')
             nom: nom,
             prenom : prenom
         });
+
         profil.$save(function success(data){
             alert("Profil créé");
 
             //ConnexionFactory.setUser(nomUtil);
             $cookies.put('idP', nomUtil);
-            /** redirection page du profil **/
-            $location.path('/profilUtilisateur/'+nomUtil);
+
         }, function error(){
             alert("Echec lors de la création du profil !");
-        })
+        });
+
+        /** redirection page du profil **/
+        $location.path('/');
     }
 }]);
