@@ -8,8 +8,8 @@
  * Controller of the clientApp
  */
 angular.module('clientApp')
-    .controller('CreerProfilCtrl', ['$location', '$scope', '$cookies', 'ProfilFactory',
-      function($location, $scope, $cookies, ProfilFactory) {
+    .controller('CreerProfilCtrl', ['$location', '$scope', '$cookies', 'ProfilFactory', 'Connexion',
+      function($location, $scope, $cookies, ProfilFactory, Connexion) {
 
     /** Bouton créer le profil **/
 
@@ -29,9 +29,8 @@ angular.module('clientApp')
         profil.$save(function success(data){
             alert("Profil créé");
 
-            //ConnexionFactory.setUser(nomUtil);
             $cookies.put('idP', nomUtil);
-
+            Connexion.setUser(nomUtil);
         }, function error(){
             alert("Echec lors de la création du profil !");
         });

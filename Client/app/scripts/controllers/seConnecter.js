@@ -8,8 +8,8 @@
  * Controller of the clientApp
  */
 angular.module('clientApp')
-    .controller('SeConnecterCtrl', ['$location', '$scope', '$cookies', 'ProfilFactory',
-      function ($location, $scope, $cookies, ProfilFactory) {
+    .controller('SeConnecterCtrl', ['$location', '$scope', '$cookies', 'ProfilFactory', 'Connexion',
+      function ($location, $scope, $cookies, ProfilFactory, Connexion) {
     $scope.data = {};
 
     $scope.seConnecterF = function (form) {
@@ -21,6 +21,7 @@ angular.module('clientApp')
 				var idP = data.nomUtil;
 
 				$cookies.put('idP', idP);
+        Connexion.setUser(idP);
 			}).catch(function() {
 				alert("Le profil "+nomUtil+" n'existe pas.");
       });

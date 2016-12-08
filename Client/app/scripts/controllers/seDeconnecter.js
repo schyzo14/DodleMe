@@ -8,8 +8,9 @@
  * Controller of the clientApp
  */
 angular.module('clientApp')
-  .controller('SeDeconnecterCtrl', ['$location', '$scope', '$cookies',
-    function ($location, $scope, $cookies) {
+  .controller('SeDeconnecterCtrl', ['$location', '$scope', '$cookies', 'Connexion',
+    function ($location, $scope, $cookies, Connexion) {
       $cookies.remove('idP');
+      Connexion.setUser(null);
       $location.path('/');
     }]);
