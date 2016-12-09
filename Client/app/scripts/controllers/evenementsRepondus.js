@@ -16,9 +16,7 @@ angular.module('clientApp')
     ReponsesFactory.get({'idU' : idU}).$promise.then(function(data) {
       angular.forEach(data.liste, function(rep) {
         eventFactory.get({'idEvent' : rep.idEvenement}).$promise.then(function(dataEvent) {
-          if(!evenements[dataEvent.id-1]) {
-            evenements[dataEvent.id-1] = dataEvent;
-          }
+			evenements.push(dataEvent);
         });
       });
       $scope.evenements = evenements;
