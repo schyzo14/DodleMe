@@ -21,10 +21,8 @@ var ajouterReponse = function(c, p, idE) {
     lastid = lastid+1;
 
     //Liste de réponses
-    listeReponses = listeEvenements.getEvenement(idE).listeReponses;
     listeReponses[idR] = new Reponse(idR, p, idE);
     listeReponses[idR].listeCreneaux.push(c);
-    listeEvenements.getEvenement(idE).listeReponses = listeReponses;
 
     return listeReponses[idR];
 };
@@ -40,13 +38,7 @@ var getReponsesUser = function(p) {
         }
     }
     return {'liste' : listeRepUser};
-}
-
-var c = listeEvenements.getEvenement(1).listeCreneau[1];
-var c2 = listeEvenements.getEvenement(1).listeCreneau[4];
-var rep = ajouterReponse(c, "schyzo", 1);
-var rep = ajouterReponse(c2, "schyzo", 1);
-rep.listeCreneaux.push(c2);
+};
 
 //Export
 exports.ajouterReponse = ajouterReponse;

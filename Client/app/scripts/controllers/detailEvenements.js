@@ -22,6 +22,7 @@ angular.module('clientApp')
         sizeRep = Object.keys($scope.evenement.listeReponses).length;
       });
 
+
       //Mise en place du colspan
       var creneauxDate = function() {
         var output = new Array();
@@ -65,14 +66,14 @@ angular.module('clientApp')
         //Ajout des réponses à l'événement
         $scope.evenement.listeReponses[sizeRep+1] = {
           id : sizeRep+1,
-          pseudo : $scope.newUser,
           listeCreneaux : listeCreneauxReponse,
+          pseudo : $scope.newUser,
           idEvenement : $scope.evenement.id
         };
 
         console.log($scope.evenement);
         //Enregistrement de l'événement
-        $scope.evenement.$update(function() {
+        eventFactory.update({'idEvent' : $scope.evenement.id}, $scope.evenement).$promise.then(function() {
           $location.path('/');
         });
       };
@@ -84,7 +85,7 @@ angular.module('clientApp')
           listeCreneauxReponse[i] = rep.creneau;
           i++;
         } else {
-          listeCreneauxReponse.splice(i);
+          listeCreneauxReponse.splice(i-1);
           i--;
         }
       };
