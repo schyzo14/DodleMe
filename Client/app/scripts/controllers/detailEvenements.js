@@ -71,7 +71,6 @@ angular.module('clientApp')
           idEvenement : $scope.evenement.id
         };
 
-        console.log($scope.evenement);
         //Enregistrement de l'événement
         eventFactory.update({'idEvent' : $scope.evenement.id}, $scope.evenement).$promise.then(function() {
           $location.path('/');

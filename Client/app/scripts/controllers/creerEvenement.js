@@ -10,21 +10,21 @@
 angular.module('clientApp')
   .controller('CreerEvenementCtrl', ['$location', '$scope', 'eventFactory', 'creneauFactory', '$timeout',
     function ($location, $scope, eventFactory, creneauFactory, $timeout) {
-    
+
     /** Calendrier : Date du jour **/
     $scope.today = function() {
         $scope.dt = new Date();
     };
     $scope.today();
-    
-      
+
+
     /** Mettre la date sur laquelle on a cliquée dans le tableau **/
-    
+
     $scope.listDates = [];
     var cpt=0;
-      
+
     $scope.$watch('dt',function()
-    {     
+    {
         /** Pas le jour présélectionné (aujourd'hui) **/
         if (cpt != 0) {
             /** Pas de duplication des dates **/
@@ -42,24 +42,24 @@ angular.module('clientApp')
         }
         cpt = cpt+1;
     });
-        
-    
+
+
     /** Bouton créer l'évènement **/
-      
+
     $scope.data = {};
-      
+
     $scope.creerEvenementF = function (form) {
-        
+
         var formV = angular.copy(form);
-        
+
         /** Test si tous les champs sont complétés */
         if (form.$valid) {
-            
+
             /** Test si il y a une date **/
             if ($scope.listDates.length === 0) {
                 alert("Merci de choisir une date avec un créneau")
             } else {
-                
+
                 /** Test si un créneau est sélectionné **/
                 var arrayLignes = document.getElementById("tableDate").rows;
                 var longueur = arrayLignes.length;
@@ -76,7 +76,7 @@ angular.module('clientApp')
                 if (taille === 0) {
                     alert ("Merci de mettre au moins un créneau !");
                 } else {
-                    
+
                     /** on fait une factory avec les paramètres **/
                     var event = new eventFactory({
                         nom : $scope.data.nom,
@@ -87,12 +87,12 @@ angular.module('clientApp')
                     event.$save(function success(data){
                         evCree(data.id);
                     }, function error(){
-                        alert("Echec lors de la création de l'évènement !");
+                        alert("Echec lors de la création de l'événement !");
                     });
-                    
+
                     /** L'évènement a été créé donc on ajoute les créneaux **/
                     var evCree = function(data){
-                        alert("L'évènement a été créé !");
+                        alert("L'événement a été créé !");
 
                         var idE = data;
 
@@ -105,7 +105,7 @@ angular.module('clientApp')
                             var creneau1 = arrayColonnes[1].children[0].options[arrayColonnes[1].children[0].selectedIndex].value;
                             var creneau2 = arrayColonnes[2].children[0].options[arrayColonnes[2].children[0].selectedIndex].value;
                             var creneau3 = arrayColonnes[3].children[0].options[arrayColonnes[3].children[0].selectedIndex].value;
-                            
+
                             if (creneau1 !== "Pas de créneau choisi") {
                                 /** ajouter creneau 1 **/
                                 /** on fait une factory avec les paramètres **/
@@ -150,19 +150,19 @@ angular.module('clientApp')
                                 });
                             }
                         }
-                        
+
                         /** redirection page de détail **/
                         $timeout(function() {
                             $location.path('/detailEvenements/'+idE);
                         }, 1000);
-                        
+
                     }
                 }
             }
-            
+
         } else {
             alert ("Merci de compléter le nom et la description !");
         }
     };
-      
+
 }]);

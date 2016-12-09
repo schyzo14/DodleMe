@@ -21,7 +21,6 @@ router.post(
 // PATCH
 router.patch(
     '/:idE', function(req, res) {
-        console.log(req.body.listeReponses);
         if(typeof req.body.listeCreneau != 'undefined') {
             evenement.setListeCreneaux(req.params.idE, req.body.listeCreneau);
         }
@@ -30,7 +29,6 @@ router.patch(
 
             var sizeRep = Object.keys(req.body.listeReponses).length;
             for(i=1; i<=sizeRep; i++) {
-                console.log(req.body.listeReponses[i]);
                 for(j=0; j<req.body.listeReponses[i].listeCreneaux.length; j++) {
                     reponse.ajouterReponse(req.body.listeReponses[i].listeCreneaux[j], req.body.listeReponses[i].pseudo,
                         req.body.listeReponses[i].idEvenement);

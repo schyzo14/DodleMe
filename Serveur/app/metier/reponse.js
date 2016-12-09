@@ -33,7 +33,6 @@ var getReponsesUser = function(p) {
     var j = 0;
     for(i=1; i<=sizeRep; i++) {
         if(typeof listeReponses[i].pseudo !== 'undefined') {
-			console.log(listeReponses[i].pseudo);
 			if(listeReponses[i].pseudo.localeCompare(p) == 0) {
 				listeRepUser[j] = listeReponses[i];
 				j++;
